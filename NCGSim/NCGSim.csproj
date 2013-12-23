@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Model\Model.ts" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
