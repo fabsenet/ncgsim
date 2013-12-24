@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiMock", "UiMock\UiMock.csproj", "{9b7be942-752d-4dde-87b3-ff0052b124fb}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiMockScreens", "UiMock\UiMockScreens\UiMockScreens.csproj", "{b5faab8a-1107-4ec1-a6d6-a63c2c042201}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B7BE942-752D-4DDE-87B3-FF0052B124FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7BE942-752D-4DDE-87B3-FF0052B124FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7BE942-752D-4DDE-87B3-FF0052B124FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7BE942-752D-4DDE-87B3-FF0052B124FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5FAAB8A-1107-4EC1-A6D6-A63C2C042201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5FAAB8A-1107-4EC1-A6D6-A63C2C042201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5FAAB8A-1107-4EC1-A6D6-A63C2C042201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5FAAB8A-1107-4EC1-A6D6-A63C2C042201}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

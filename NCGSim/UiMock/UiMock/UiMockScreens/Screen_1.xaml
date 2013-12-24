@@ -1,0 +1,80 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" xmlns:pc="http://schemas.microsoft.com/prototyping/2010/controls" x:Name="UiMockScreens_Screen_1_Name"
+	mc:Ignorable="d"
+	x:Class="UiMockScreens.Screen_1"
+	Width="640" Height="480">
+
+	<Grid x:Name="LayoutRoot" Background="White">
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="369.661" Margin="43.439,21.719,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="553.846"/>
+		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="125.973,83.62,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
+		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="264.978,80.362,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
+		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="251.291,199.819,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
+		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="137.264,274.751,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
+		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="376.178,274.751,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
+		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="477.173,102.081,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
+		<Slider HorizontalAlignment="Left" Height="23.891" Margin="43.439,413.756,0,0" Style="{DynamicResource Slider-Sketch}" VerticalAlignment="Top" Width="553.846" Maximum="100" Value="27"/>
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="7.696" Margin="166.73,95.906,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5">
+			<pc:SketchRectangleUC.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="-2.107"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</pc:SketchRectangleUC.RenderTransform>
+		</pc:SketchRectangleUC>
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10.992" Margin="312.294,100.228,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="158.398" RenderTransformOrigin="0.5,0.5">
+			<pc:SketchRectangleUC.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="3.718"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</pc:SketchRectangleUC.RenderTransform>
+		</pc:SketchRectangleUC>
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10.06" Margin="368.948,200.603,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="152.602" RenderTransformOrigin="0.5,0.5">
+			<pc:SketchRectangleUC.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="-59.32"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</pc:SketchRectangleUC.RenderTransform>
+		</pc:SketchRectangleUC>
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10.749" Margin="236.847,150.847,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="76.894" RenderTransformOrigin="0.5,0.5">
+			<pc:SketchRectangleUC.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="98.929"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</pc:SketchRectangleUC.RenderTransform>
+		</pc:SketchRectangleUC>
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="12.036" Margin="165.724,249.027,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5">
+			<pc:SketchRectangleUC.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="-33.626"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</pc:SketchRectangleUC.RenderTransform>
+		</pc:SketchRectangleUC>
+		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="12.036" Margin="286.266,245.77,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5">
+			<pc:SketchRectangleUC.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="30.63"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</pc:SketchRectangleUC.RenderTransform>
+		</pc:SketchRectangleUC>
+	</Grid>
+</UserControl>
