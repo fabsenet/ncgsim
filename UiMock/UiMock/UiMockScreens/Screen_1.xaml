@@ -8,73 +8,80 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="369.661" Margin="43.439,21.719,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="553.846"/>
-		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="125.973,83.62,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
-		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="264.978,80.362,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
-		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="251.291,199.819,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
-		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="137.264,274.751,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
-		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="376.178,274.751,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
-		<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Margin="477.173,102.081,0,0" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837"/>
-		<Slider HorizontalAlignment="Left" Height="23.891" Margin="43.439,413.756,0,0" Style="{DynamicResource Slider-Sketch}" VerticalAlignment="Top" Width="553.846" Maximum="100" Value="27"/>
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="7.696" Margin="166.73,95.906,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5">
-			<pc:SketchRectangleUC.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="-2.107"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</pc:SketchRectangleUC.RenderTransform>
-		</pc:SketchRectangleUC>
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10.992" Margin="312.294,100.228,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="158.398" RenderTransformOrigin="0.5,0.5">
-			<pc:SketchRectangleUC.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="3.718"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</pc:SketchRectangleUC.RenderTransform>
-		</pc:SketchRectangleUC>
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10.06" Margin="368.948,200.603,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="152.602" RenderTransformOrigin="0.5,0.5">
-			<pc:SketchRectangleUC.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="-59.32"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</pc:SketchRectangleUC.RenderTransform>
-		</pc:SketchRectangleUC>
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10.749" Margin="236.847,150.847,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="76.894" RenderTransformOrigin="0.5,0.5">
-			<pc:SketchRectangleUC.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="98.929"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</pc:SketchRectangleUC.RenderTransform>
-		</pc:SketchRectangleUC>
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="12.036" Margin="165.724,249.027,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5">
-			<pc:SketchRectangleUC.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="-33.626"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</pc:SketchRectangleUC.RenderTransform>
-		</pc:SketchRectangleUC>
-		<pc:SketchRectangleUC HorizontalAlignment="Left" Height="12.036" Margin="286.266,245.77,0,0" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5">
-			<pc:SketchRectangleUC.RenderTransform>
-				<TransformGroup>
-					<ScaleTransform/>
-					<SkewTransform/>
-					<RotateTransform Angle="30.63"/>
-					<TranslateTransform/>
-				</TransformGroup>
-			</pc:SketchRectangleUC.RenderTransform>
-		</pc:SketchRectangleUC>
+		<Slider HorizontalAlignment="Left" Height="23.891" Margin="43.439,424.616,0,0" Style="{DynamicResource Slider-Sketch}" VerticalAlignment="Top" Width="553.846" Maximum="100" Value="27"/>
+		<Viewbox HorizontalAlignment="Left" Height="375.181" VerticalAlignment="Top" Width="553.846" Margin="43.439,33.575,0,0">
+			<Canvas HorizontalAlignment="Left" Height="388.982" VerticalAlignment="Top" Width="573.394">
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="388.982" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="573.394"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="52.001" Canvas.Top="166.478"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="231.539" Canvas.Top="68.643"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="217.852" Canvas.Top="188.1"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="103.825" Canvas.Top="263.032"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="342.739" Canvas.Top="263.032"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="443.734" Canvas.Top="90.362"/>
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5" Canvas.Left="133.291" Canvas.Top="84.187">
+					<pc:SketchRectangleUC.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="-2.107"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</pc:SketchRectangleUC.RenderTransform>
+				</pc:SketchRectangleUC>
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="158.398" RenderTransformOrigin="0.5,0.5" Canvas.Left="278.855" Canvas.Top="88.509">
+					<pc:SketchRectangleUC.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="3.718"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</pc:SketchRectangleUC.RenderTransform>
+				</pc:SketchRectangleUC>
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Left="446.444" Canvas.Top="165.038">
+					<pc:SketchRectangleUC.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="-111.544"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</pc:SketchRectangleUC.RenderTransform>
+				</pc:SketchRectangleUC>
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="76.894" RenderTransformOrigin="0.5,0.5" Canvas.Left="203.408" Canvas.Top="139.128">
+					<pc:SketchRectangleUC.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="98.929"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</pc:SketchRectangleUC.RenderTransform>
+				</pc:SketchRectangleUC>
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5" Canvas.Left="132.285" Canvas.Top="237.308">
+					<pc:SketchRectangleUC.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="-33.626"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</pc:SketchRectangleUC.RenderTransform>
+				</pc:SketchRectangleUC>
+				<pc:SketchRectangleUC HorizontalAlignment="Left" Height="10" Style="{DynamicResource Rectangle-Sketch}" VerticalAlignment="Top" Width="92.082" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFB97005" Background="#FFEEAA1A" Canvas.Left="252.827" Canvas.Top="234.051">
+					<pc:SketchRectangleUC.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="30.63"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</pc:SketchRectangleUC.RenderTransform>
+				</pc:SketchRectangleUC>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="90.242" Canvas.Top="72.987"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="500.929" Canvas.Top="219.354"/>
+				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="200.261" Canvas.Top="312.665"/>
+			</Canvas>
+		</Viewbox>
 	</Grid>
 </UserControl>
