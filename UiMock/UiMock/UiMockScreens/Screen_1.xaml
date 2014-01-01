@@ -81,6 +81,15 @@
 				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="90.242" Canvas.Top="72.987"/>
 				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="500.929" Canvas.Top="219.354"/>
 				<ed:Arc ArcThickness="1" ArcThicknessUnit="Percent" EndAngle="360" Fill="{DynamicResource BaseBackground-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" HorizontalAlignment="Left" Height="33.665" Stretch="None" Stroke="{DynamicResource BaseBorder-Sketch}" StrokeThickness="2" StrokeLineJoin="Round" VerticalAlignment="Top" Width="35.837" Canvas.Left="200.261" Canvas.Top="312.665"/>
+				<TextBlock Canvas.Left="105.149" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="79.875" FontSize="21.333"><Run Language="de-de" Text="1"/></TextBlock>
+				<TextBlock Canvas.Left="63.829" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="172.489" FontSize="21.333"><Run Language="de-de" Text="4"/></TextBlock>
+				<TextBlock Canvas.Left="243.461" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="74.084" FontSize="21.333"><Run Language="de-de" Text="2"/></TextBlock>
+				<TextBlock Canvas.Left="456.771" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="95.599" FontSize="21.333"><Run Language="de-de" Text="3"/></TextBlock>
+				<TextBlock Canvas.Left="230.203" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="192.003" FontSize="21.333"><Run Language="de-de" Text="5"/></TextBlock>
+				<TextBlock Canvas.Left="115.519" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="268.269" FontSize="21.333"><Run Language="de-de" Text="7"/></TextBlock>
+				<TextBlock Canvas.Left="211.849" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="315.901" FontSize="21.333"><Run Language="de-de" Text="9"/></TextBlock>
+				<TextBlock Canvas.Left="355.536" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="267.602" FontSize="21.333"><Run Language="de-de" Text="8"/></TextBlock>
+				<TextBlock Canvas.Left="515.792" Style="{DynamicResource TextBlock-Sketch}" Canvas.Top="225.258" FontSize="21.333"><Run Language="de-de" Text="6"/></TextBlock>
 			</Canvas>
 		</Viewbox>
 	</Grid>
