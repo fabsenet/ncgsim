@@ -1,28 +1,58 @@
 ﻿module model {
 
-    class simulator {
-        currentState:state;
-        constructor(currentState: state) {
-            this.currentState = currentState;
-        }
-
-        simulate(): state {
-            //todo actually simulating here
-            var newstate = new state();
-            newstate.roundNumber = this.currentState.roundNumber;
-            newstate.gameSettings = this.currentState.gameSettings;
-            newstate.graph = this.currentState.graph;
+    interface ISimulator {
+        simulateOneRound(state: State):State;
+    }
+    class SequentialSimulator implements ISimulator {
+        
+        simulateOneRound(currentState:State): State {
+            //todo add actually simulating here
+            var newstate = new State();
+            newstate.roundNumber = currentState.roundNumber++;
+            newstate.gameSettings = currentState.gameSettings;
+            newstate.graph = currentState.graph;
             return newstate;
         }
+
     }
 
-    class simulationHistory {
-        states: state[];
+    class ParallelSimulator implements ISimulator {
+
+        simulateOneRound(currentState: State): State {
+            //todo add actually simulating here
+            var newstate = new State();
+            newstate.roundNumber = currentState.roundNumber++;
+            newstate.gameSettings = currentState.gameSettings;
+            newstate.graph = currentState.graph;
+            return newstate;
+        }
+
+    }
+
+    class SimulatorFactory {
+
+        buildInstance(operationMode: OperationMode): ISimulator {
+            switch (operationMode) {
+
+            case OperationMode.SEQUENTIAL:
+                return new SequentialSimulator();
+
+            case OperationMode.PARALLEL:
+                return new ParallelSimulator();
+            default:
+                return null;
+            }
+        }
+
+    }
+
+    class SimulationHistory {
+        states: State[];
 
         simulateNextStep() {
             var lastState = this.states[this.states.length];
 
-            var sim = new simulator(lastState);
+            var sim = new Simulator(lastState);
             var nextState = sim.simulate();
 
             if (nextState != null) {
@@ -32,20 +62,38 @@
                 return false;
             }
         }
+
     }
 
-    class state {
-
+    class State {
         roundNumber: number;
-
-        graph: graph;
-
-        gameSettings: gameSettings;
+        graph: Graph;
+        gameSettings: GameSettings;
     }
 
-    class graph {
+    class Graph {
+        edges : Edge[];
     }
 
-    class gameSettings {
+    class Edge {
+        id: number;
+        position: Point;
+        connectedEdges: Edge[];
     }
+
+    class Point {
+        x: number;
+        y: number;
+    }
+
+    class GameSettings {
+        operationMode: OperationMode;
+        gameManipulation: (state: State)=> State;
+    }
+
+    enum OperationMode {
+        SEQUENTIAL,
+        PARALLEL
+    }
+
 }
