@@ -59,8 +59,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Model\Model.ts" />
+    <TypeScriptCompile Include="Model\SimulationHistory.ts" />
+    <TypeScriptCompile Include="Model\State.ts" />
     <Content Include="Web.config" />
+    <TypeScriptCompile Include="Model\Simulator.ts" />
+    <TypeScriptCompile Include="Model\_references.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
