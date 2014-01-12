@@ -5,6 +5,7 @@ module Graph {
     export interface INode<TNodePayload> {
         id: number;
         data: TNodePayload;
+        connectedEdges: INode<TNodePayload>[];
     }
 
     export interface IGraph<TNodePayload> {
@@ -12,8 +13,8 @@ module Graph {
         hasEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>): boolean;
         addEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>): void;
         removeEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>): void;
-
-        //Node manipulations
+      
+          //Node manipulations
         addNode(payload: TNodePayload): INode<TNodePayload>;
         removeNode(node: INode<TNodePayload>);
 
@@ -32,26 +33,17 @@ module Graph {
         private nextNodeId = 1;
 
         hasEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
-            var startEdge = <Edge<TNodePayload>> startNode;
-            var endEdge = <Edge<TNodePayload>> endNode;
-            
-            return _.contains(startEdge.connectedEdges, endEdge);
+            return _.contains(startNode.connectedEdges, endNode);
         }
 
         addEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
-            var startEdge = <Edge<TNodePayload>> startNode;
-            var endEdge = <Edge<TNodePayload>> endNode;
-
-            if (!_.contains(startEdge.connectedEdges, endEdge)) {
-                startEdge.connectedEdges.push(endEdge);
+            if (!_.contains(startNode.connectedEdges, endNode)) {
+                startNode.connectedEdges.push(endNode);
             }
         }
 
         removeEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
-            var startEdge = <Edge<TNodePayload>> startNode;
-            var endEdge = <Edge<TNodePayload>> endNode;
-
-            ArrayHelper.removeItem(startEdge.connectedEdges, endEdge);
+            ArrayHelper.removeItem(startNode.connectedEdges, endNode);
         }
 
 
