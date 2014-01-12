@@ -2,9 +2,9 @@
 
 module SimulationHistory {
 
-    class SimulationHistory {
-        jsonStates: string[];
-        states: State.State[];
+    export class SimulationHistory {
+        jsonStates: string[] = [];
+        states: State.State[] = [];
         runningState: State.State;
 
         constructor(initialState: State.State) {

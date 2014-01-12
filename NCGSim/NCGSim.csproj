@@ -59,17 +59,34 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Model\ArrayHelper.ts" />
+    <TypeScriptCompile Include="Model\Graph.ts" />
     <TypeScriptCompile Include="Model\SimulationHistory.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
+    <Content Include="lib\jasmine-2.0.0\boot.js" />
+    <Content Include="lib\jasmine-2.0.0\console.js" />
+    <Content Include="lib\jasmine-2.0.0\jasmine-html.js" />
+    <Content Include="lib\jasmine-2.0.0\jasmine.css" />
+    <Content Include="lib\jasmine-2.0.0\jasmine.js" />
+    <Content Include="lib\jasmine-2.0.0\jasmine_favicon.png" />
+    <Content Include="Scripts\typings\jasmine\jasmine.d.ts" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="SpecRunner.html" />
     <Content Include="Web.config" />
     <TypeScriptCompile Include="Model\Simulator.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\SimulationHistoryTests.ts" />
     <TypeScriptCompile Include="Model\_references.ts" />
+    <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="generate_version_file.ps1" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\underscore.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -77,6 +94,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
