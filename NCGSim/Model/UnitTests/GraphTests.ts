@@ -103,5 +103,8 @@ describe("A Graph", () => {
         expect(graph.hasEdge(node1, node2)).toBe(false);
     });
 
-
+    it("throws on adding edges with same start and end node", ()=> {
+        var node = graph.addNode(null);
+        expect(()=> graph.addEdge(node, node)).toThrowError();
+    });
 });

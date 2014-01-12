@@ -37,6 +37,8 @@ module Graph {
         }
 
         addEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
+            if (startNode === endNode) throw new Error("StartNode MUST NOT be the same as the EndNode for this graph implementation");
+
             if (!_.contains(startNode.connectedEdges, endNode)) {
                 startNode.connectedEdges.push(endNode);
             }
