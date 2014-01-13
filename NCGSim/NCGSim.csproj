@@ -61,7 +61,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
-    <TypeScriptCompile Include="Model\SimulationHistory.ts" />
+    <TypeScriptCompile Include="Model\SimulationCore.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
     <Content Include="lib\jasmine-2.0.0\boot.js" />
     <Content Include="lib\jasmine-2.0.0\console.js" />
@@ -76,7 +76,7 @@
     <Content Include="Web.config" />
     <TypeScriptCompile Include="Model\Simulator.ts" />
     <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
-    <TypeScriptCompile Include="Model\UnitTests\SimulationHistoryTests.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\SimulationCoreTests.ts" />
     <TypeScriptCompile Include="Model\_references.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>
