@@ -4,16 +4,17 @@ module SimulationCore {
 
     export class SimulationHistory {
         actions: any[] = [];
-        runningState: State.State;
+        state: State.State;
+        simulator: Simulator.ISimulator;
 
         constructor(initialState: State.State) {
-            this.runningState = initialState;
+            this.state = initialState;
+            this.simulator = Simulator.SimulatorFactory.buildInstance(this.state.gameSettings.operationMode);
         }
 
         simulateNextStep() {
-            var sim = Simulator.SimulatorFactory.buildInstance(this.runningState.gameSettings.operationMode);
 
-            sim.simulateOneRound(this.runningState);
+            this.simulator.simulateOneRound(this.state);
 
         }
 
