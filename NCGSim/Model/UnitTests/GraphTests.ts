@@ -94,7 +94,7 @@ describe("A Graph", () => {
         expect(graph.hasEdge(node1, node2)).toBe(false);
     });
 
-    it("ignores removing of no existant edges", () => {
+    it("ignores removing of not existing edges", () => {
         var node1 = graph.addNode("1");
         var node2 = graph.addNode("2");
 
