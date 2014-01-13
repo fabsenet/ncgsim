@@ -5,11 +5,12 @@ module State {
     export class State {
         graph = Graph.GraphFactory.getInstance<String>();
         gameSettings: GameSettings = new GameSettings();
+
     }
 
     export class GameSettings {
-        operationMode: OperationMode;
-        gameManipulation: (state: State)=> State;
+        operationMode: OperationMode = OperationMode.SEQUENTIAL;
+        gameManipulation: (state: State) => State = null;
     }
 
     export enum OperationMode {
