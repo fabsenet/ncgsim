@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="refresh" content="5">
     <title>Jasmine Spec Runner v2.0.0</title>
     <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.0.0/jasmine_favicon.png">
     <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.0/jasmine.css">
@@ -20,7 +21,19 @@
     <!-- Tests -->
     <script src="Model/UnitTests/SimulationCoreTests.js"></script>
     <script src="Model/UnitTests/GraphTests.js"></script>
+    <script src="Model/UnitTests/SimulatorTests.js"></script>
+    
 </head>
-<body>
-</body>
+    <body>
+        <header id="head1" style="font-size: 10pt;color:cadetblue;"></header>
+        <script type="text/javascript">
+            var oldOnload = window.onload;
+            window.onload = function() {
+                document.getElementById("head1").innerHTML = "Time of loading: " + new Date().toLocaleTimeString();
+                if (oldOnload !== undefined) {
+                    oldOnload();
+                }
+            };
+        </script>
+    </body>
 </html>

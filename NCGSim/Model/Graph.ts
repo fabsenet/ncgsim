@@ -1,14 +1,12 @@
 /// <reference path="_references.ts" />
 
-module Graph {
-
-    export interface INode<TNodePayload> {
+    interface INode<TNodePayload> {
         id: number;
         data: TNodePayload;
         connectedEdges: INode<TNodePayload>[];
     }
 
-    export interface IGraph<TNodePayload> {
+    interface IGraph<TNodePayload> {
         //Edge manipulations
         hasEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>): boolean;
         addEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>): void;
@@ -22,7 +20,7 @@ module Graph {
         getNodes() : INode<TNodePayload>[];
     }
 
-    export class GraphFactory {
+    class GraphFactory {
         static getInstance<TNodePayload>() : IGraph<TNodePayload> {
             return new AdjacencyGraph<TNodePayload>();
         }
@@ -37,7 +35,7 @@ module Graph {
         }
 
         addEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
-            if (startNode === endNode) throw new Error("StartNode MUST NOT be the same as the EndNode for this graph implementation");
+            if (startNode === endNode) {throw new Error("StartNode MUST NOT be the same as the EndNode for this graph implementation");}
 
             if (!_.contains(startNode.connectedEdges, endNode)) {
                 startNode.connectedEdges.push(endNode);
@@ -45,7 +43,7 @@ module Graph {
         }
 
         removeEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
-            ArrayHelper.removeItem(startNode.connectedEdges, endNode);
+            removeArrayItem(startNode.connectedEdges, endNode);
         }
 
 
@@ -58,7 +56,7 @@ module Graph {
         }
 
         removeNode(node: INode<TNodePayload>) {
-            ArrayHelper.removeItem(this.edges, node);
+            removeArrayItem(this.edges, node);
         }
 
         getNodes(): INode<TNodePayload>[] {
@@ -73,4 +71,3 @@ module Graph {
 
         data: TNodePayload;
     }
-}

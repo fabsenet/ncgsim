@@ -1,21 +1,24 @@
 ﻿/// <reference path="_references.ts" />
 
-module State {
 
-    export class State {
-        graph = Graph.GraphFactory.getInstance<String>();
-        gameSettings: GameSettings = new GameSettings();
-
-    }
-
-    export class GameSettings {
-        operationMode: OperationMode = OperationMode.SEQUENTIAL;
-        gameManipulation: (state: State) => State = null;
-    }
-
-    export enum OperationMode {
-        SEQUENTIAL,
-        PARALLEL
-    }
-
+class State {
+    graph = GraphFactory.getInstance<NodeData>();
+    gameSettings: GameSettings = new GameSettings();
+    roundCounter = 0;
 }
+
+class NodeData {
+    position = {x: 0, y:0};
+}
+
+class GameSettings {
+    operationMode: OperationMode = OperationMode.SEQUENTIAL;
+    gameManipulation: (state: State) => State = null;
+}
+
+enum OperationMode {
+    SEQUENTIAL,
+    PARALLEL,
+    UNITTEST
+}
+

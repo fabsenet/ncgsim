@@ -73,10 +73,13 @@
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="SpecRunner.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <TypeScriptCompile Include="Model\Simulator.ts" />
     <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulationCoreTests.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\SimulatorTests.ts" />
     <TypeScriptCompile Include="Model\_references.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>

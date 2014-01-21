@@ -4,7 +4,7 @@
 
 describe("A GraphFactory", ()=> {
     it("returns a graph instance", ()=> {
-        var graph = Graph.GraphFactory.getInstance<String>();
+        var graph = GraphFactory.getInstance<String>();
         expect(graph).not.toBeNull();
     });
 });
@@ -15,7 +15,7 @@ describe("A Graph", () => {
     var graph;
 
     beforeEach(()=> {
-        graph = Graph.GraphFactory.getInstance<String>();
+        graph = GraphFactory.getInstance<String>();
     });
 
     it("is initially empty", () => {

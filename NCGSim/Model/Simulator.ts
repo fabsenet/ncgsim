@@ -1,16 +1,15 @@
 /// <reference path="_references.ts" />
 
 
-module Simulator {
 
 
-    export interface ISimulator {
-        simulateOneRound(state: State.State);
+    interface ISimulator {
+        simulateOneRound(state: State) : IAction[];
     }
 
     class SequentialSimulator implements ISimulator {
 
-        simulateOneRound(currentState: State.State) {
+        simulateOneRound(currentState: State): IAction[] {
             //todo add actually simulating here
             throw new Error("Not implemented");
         }
@@ -19,27 +18,31 @@ module Simulator {
 
     class ParallelSimulator implements ISimulator {
 
-        simulateOneRound(currentState: State.State) {
+        simulateOneRound(currentState: State): IAction[] {
             //todo add actually simulating here
             throw new Error("Not implemented");
         }
 
     }
 
-    export class SimulatorFactory {
+    class SimulatorFactory {
 
-        static buildInstance(operationMode: State.OperationMode): ISimulator {
+        static simulatorInstance: ISimulator;
+
+        static buildInstance(operationMode: OperationMode): ISimulator {
             switch (operationMode) {
 
-                case State.OperationMode.SEQUENTIAL:
+                case OperationMode.SEQUENTIAL:
                 return new SequentialSimulator();
 
-                case State.OperationMode.PARALLEL:
-                return new ParallelSimulator();
+                case OperationMode.PARALLEL:
+                    return new ParallelSimulator();
+
+                case OperationMode.UNITTEST:
+                    return this.simulatorInstance;
             default:
                 return null;
             }
         }
 
     }
-}

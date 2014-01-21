@@ -1,23 +1,42 @@
 /// <reference path="_references.ts" />
 
-module SimulationCore {
+interface IAction {
+    apply(state: State): void;
+    revert(state: State): void;
+}
 
-    export class SimulationHistory {
-        actions: any[] = [];
-        state: State.State;
-        simulator: Simulator.ISimulator;
+class SimulationHistory {
+    actionsByRound: IAction[][] = [];
+    state: State;
+    simulator: ISimulator;
 
-        constructor(initialState: State.State) {
-            this.state = initialState;
-            this.simulator = Simulator.SimulatorFactory.buildInstance(this.state.gameSettings.operationMode);
+    constructor(initialState: State) {
+        this.state = initialState;
+    }
+
+    simulateNextStep() {
+        this.simulator = SimulatorFactory.buildInstance(this.state.gameSettings.operationMode);
+
+        var actions = this.simulator.simulateOneRound(this.state);
+
+        if (actions == null || actions.length <= 0) {
+            actions = [];
         }
 
-        simulateNextStep() {
+        _.each(actions, function (action) {
+            action.apply(this.state);
+        }, this);
 
-            this.simulator.simulateOneRound(this.state);
+        this.state.roundCounter++;
+        this.actionsByRound.push(actions);
+    }
 
-        }
+    goOneRoundBack() {
+        var actionsToRevert = this.actionsByRound[--this.state.roundCounter];
 
+        _.each(actionsToRevert, function (action) {
+            action.revert(this.state);
+        }, this);
     }
 
 }
