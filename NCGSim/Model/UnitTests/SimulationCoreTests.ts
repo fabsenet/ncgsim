@@ -55,7 +55,7 @@ describe("A SimulationCore", ()=> {
         SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
 
         simulationHistory.simulateNextStep();
-        simulationHistory.goOneRoundBack();
+        simulationHistory.goOneRoundBackwards();
 
         expect(action.apply).toHaveBeenCalledWith(state);
         expect(action.revert).toHaveBeenCalledWith(state);
@@ -67,8 +67,45 @@ describe("A SimulationCore", ()=> {
         var expected = state.roundCounter;
         SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
         simulationHistory.simulateNextStep();
-        simulationHistory.goOneRoundBack();
+        simulationHistory.goOneRoundBackwards();
 
         expect(state.roundCounter).toBe(expected);
     });
+
+    it("cannot go forward or backward without simulating", ()=> {
+        expect(simulationHistory.canGoOneRoundBackwards()).toBe(false);
+        expect(simulationHistory.canGoOneRoundForward()).toBe(false);
+    });
+
+    it("throws if you try to go backward or forward beyond the known actions", ()=> {
+        expect(() => simulationHistory.goOneRoundBackwards()).toThrow();
+        expect(()=> simulationHistory.goOneRoundForward()).toThrow();
+    });
+
+    it("calls reapplies actions if you go forward (after going backward)", () => {
+        var action: IAction = { apply: state => { }, revert: state => { } };
+
+        var applySpy = spyOn(action, "apply");
+        var revertSpy = spyOn(action, "revert");
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
+
+        expect(applySpy.calls.count()).toBe(0);
+        expect(revertSpy.calls.count()).toBe(0);
+
+        simulationHistory.simulateNextStep();
+
+        expect(applySpy.calls.count()).toBe(1);
+        expect(revertSpy.calls.count()).toBe(0);
+
+        simulationHistory.goOneRoundBackwards();
+
+        expect(applySpy.calls.count()).toBe(1);
+        expect(revertSpy.calls.count()).toBe(1);
+
+        simulationHistory.goOneRoundForward();
+
+        expect(applySpy.calls.count()).toBe(2);
+        expect(revertSpy.calls.count()).toBe(1);
+    });
+
 });

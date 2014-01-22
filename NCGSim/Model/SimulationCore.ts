@@ -31,11 +31,30 @@ class SimulationHistory {
         this.actionsByRound.push(actions);
     }
 
-    goOneRoundBack() {
+    canGoOneRoundBackwards(): boolean {
+        return this.state.roundCounter > 0;
+    }
+    canGoOneRoundForward(): boolean {
+        return this.actionsByRound.length > this.state.roundCounter;
+    }
+
+    goOneRoundBackwards() {
+        if (!this.canGoOneRoundBackwards()) throw new Error("Can not go any more backwards.");
+
         var actionsToRevert = this.actionsByRound[--this.state.roundCounter];
 
         _.each(actionsToRevert, function (action) {
             action.revert(this.state);
+        }, this);
+    }
+
+    goOneRoundForward() {
+        if (!this.canGoOneRoundForward()) throw new Error("Can not go any more forward. Maybe you can simulate more rounds?");
+
+        var actionsToReapply = this.actionsByRound[this.state.roundCounter++];
+
+        _.each(actionsToReapply, function (action) {
+            action.apply(this.state);
         }, this);
     }
 

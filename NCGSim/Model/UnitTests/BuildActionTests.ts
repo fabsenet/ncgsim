@@ -24,7 +24,7 @@ describe("A BuildNodeAction", () => {
         expect(state.graph.getNodes().length).toBe(1);
         expect(_.first(state.graph.getNodes()).data).toBe(nodedata);
 
-        simulationHistory.goOneRoundBack();
+        simulationHistory.goOneRoundBackwards();
         expect(state.graph.getNodes().length).toBe(0);
     });
 
@@ -60,7 +60,7 @@ describe("A BuildEdgeAction", () => {
         expect(state.graph.hasEdge(node1, node2)).toBe(true);
         expect(state.graph.hasEdge(node2, node1)).toBe(false);
 
-        simulationHistory.goOneRoundBack();
+        simulationHistory.goOneRoundBackwards();
 
         expect(state.graph.getNodes().length).toBe(2);
         expect(state.graph.hasEdge(node1, node2)).toBe(false);
