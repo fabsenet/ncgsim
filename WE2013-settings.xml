@@ -43,7 +43,7 @@
     <TsLintEnable>True</TsLintEnable>
     <TsLintErrorLocation>2</TsLintErrorLocation>
     <TypeScriptBraceCompletion>True</TypeScriptBraceCompletion>
-    <TypeScriptShowPreviewWindow>True</TypeScriptShowPreviewWindow>
+    <TypeScriptShowPreviewWindow>False</TypeScriptShowPreviewWindow>
     <UnusedCss_IgnorePatterns>bootstrap*; reset.css; normalize.css; jquery*; toastr*; foundation*; animate*; inuit*; elements*; ratchet*; hint*; flat-ui*; 960*; skeleton*</UnusedCss_IgnorePatterns>
   </settings>
 </webessentials>
