@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
+    <TypeScriptCompile Include="Model\BuildActions.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
     <TypeScriptCompile Include="Model\SimulationCore.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
@@ -77,6 +78,7 @@
       <SubType>Designer</SubType>
     </Content>
     <TypeScriptCompile Include="Model\Simulator.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\BuildActionTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulationCoreTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulatorTests.ts" />

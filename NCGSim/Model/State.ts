@@ -8,7 +8,11 @@ class State {
 }
 
 class NodeData {
-    position = {x: 0, y:0};
+    position;
+
+    constructor(x: number = 0, y: number = 0) {
+        this.position = { x: x, y: y };
+    }
 }
 
 class GameSettings {

@@ -10,30 +10,35 @@
     <script type="text/javascript" src="lib/jasmine-2.0.0/jasmine-html.js"></script>
     <script type="text/javascript" src="lib/jasmine-2.0.0/boot.js"></script>
     <script src="Scripts/underscore.min.js"></script>
+
     <!-- Models -->
     <script src="Model/ArrayHelper.js"></script>
+    <script src="Model/BuildActions.js"></script>
+    <script src="Model/Graph.js"></script>
     <script src="Model/SimulationCore.js"></script>
     <script src="Model/Simulator.js"></script>
     <script src="Model/State.js"></script>
-    <script src="Model/Graph.js"></script>
-    
+
 
     <!-- Tests -->
     <script src="Model/UnitTests/SimulationCoreTests.js"></script>
     <script src="Model/UnitTests/GraphTests.js"></script>
     <script src="Model/UnitTests/SimulatorTests.js"></script>
-    
+    <script src="Model/UnitTests/BuildActionTests.js"></script>
+
+
+
 </head>
-    <body>
-        <header id="head1" style="font-size: 10pt;color:cadetblue;"></header>
-        <script type="text/javascript">
-            var oldOnload = window.onload;
-            window.onload = function() {
-                document.getElementById("head1").innerHTML = "Time of loading: " + new Date().toLocaleTimeString();
-                if (oldOnload !== undefined) {
-                    oldOnload();
-                }
-            };
-        </script>
-    </body>
+<body>
+    <header id="head1" style="font-size: 10pt;color:cadetblue;"></header>
+    <script type="text/javascript">
+        var oldOnload = window.onload;
+        window.onload = function () {
+            document.getElementById("head1").innerHTML = "Time of loading: " + new Date().toLocaleTimeString();
+            if (oldOnload !== undefined) {
+                oldOnload();
+            }
+        };
+    </script>
+</body>
 </html>
