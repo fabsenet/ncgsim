@@ -349,7 +349,7 @@ declare module jasmine {
 
         identity: string;
         and: SpyAnd;
-        calls: any[];
+        calls: { count: () => number }; //TODO: provide pull request for DefinitelyTyped: https://github.com/borisyankov/DefinitelyTyped
         mostRecentCall: { args: any[]; };
         argsForCall: any[];
         wasCalled: boolean;
