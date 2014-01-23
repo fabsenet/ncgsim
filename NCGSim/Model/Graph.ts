@@ -27,7 +27,7 @@
     }
 
     class AdjacencyGraph<TNodePayload> implements IGraph<TNodePayload> {
-        private edges: Edge<TNodePayload>[] = [];
+        private nodes: AdjacencyNode<TNodePayload>[] = [];
         private nextNodeId = 1;
 
         hasEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
@@ -48,26 +48,26 @@
 
 
         addNode(payload: TNodePayload): INode<TNodePayload> {
-            var node = new Edge<TNodePayload>();
+            var node = new AdjacencyNode<TNodePayload>();
             node.id = this.nextNodeId++;
             node.data = payload;
-            this.edges.push(node);
+            this.nodes.push(node);
             return node;
         }
 
         removeNode(node: INode<TNodePayload>) {
-            removeArrayItem(this.edges, node);
+            removeArrayItem(this.nodes, node);
         }
 
         getNodes(): INode<TNodePayload>[] {
-            return this.edges;
+            return this.nodes;
         }
 
     }
 
-    class Edge<TNodePayload> implements INode<TNodePayload> {
+    class AdjacencyNode<TNodePayload> implements INode<TNodePayload> {
         id: number;
-        connectedEdges: Edge<TNodePayload>[] = [];
+        connectedEdges: AdjacencyNode<TNodePayload>[] = [];
 
         data: TNodePayload;
     }

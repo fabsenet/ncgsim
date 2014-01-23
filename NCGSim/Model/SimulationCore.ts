@@ -43,6 +43,7 @@ class SimulationHistory {
 
         var actionsToRevert = this.actionsByRound[--this.state.roundCounter];
 
+        //TODO Reverse the order of actions?
         _.each(actionsToRevert, function (action) {
             action.revert(this.state);
         }, this);

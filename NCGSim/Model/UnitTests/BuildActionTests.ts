@@ -67,4 +67,88 @@ describe("A BuildEdgeAction", () => {
         expect(state.graph.hasEdge(node2, node1)).toBe(false);
     });
 
+    it("throws if the edge already exists", () => {
+
+        state.graph.addEdge(node1, node2);
+        var action = new BuildEdgeAction(node1, node2);
+
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
+
+        expect(state.graph.getNodes().length).toBe(2);
+        expect(state.graph.hasEdge(node1, node2)).toBe(true);
+        expect(state.graph.hasEdge(node2, node1)).toBe(false);
+
+        expect(() => simulationHistory.simulateNextStep()).toThrow();
+    });
+
+    it("throws if the edge disappears between apply and revert", () => {
+        var action = new BuildEdgeAction(node1, node2);
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
+        simulationHistory.simulateNextStep();
+        state.graph.removeEdge(node1, node2);
+        expect(() => simulationHistory.goOneRoundBackwards()).toThrow();
+    });
+
+});
+
+describe("A RemoveEdgeAction", () => {
+
+    var state: State;
+    var simulationHistory;
+    var node1;
+    var node2;
+
+    beforeEach(() => {
+        state = new State();
+        node1 = state.graph.addNode(new NodeData(1, 1));
+        node2 = state.graph.addNode(new NodeData(1, 2));
+        state.graph.addEdge(node1, node2);
+        state.gameSettings.operationMode = OperationMode.UNITTEST;
+        simulationHistory = new SimulationHistory(state);
+    });
+
+    it("removes an edge (=apply) and rebuilds it (=revert)", () => {
+        var action = new RemoveEdgeAction(node1, node2);
+
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
+
+        expect(state.graph.getNodes().length).toBe(2);
+        expect(state.graph.hasEdge(node1, node2)).toBe(true);
+        expect(state.graph.hasEdge(node2, node1)).toBe(false);
+
+        simulationHistory.simulateNextStep();
+
+        expect(state.graph.getNodes().length).toBe(2);
+        expect(state.graph.hasEdge(node1, node2)).toBe(false);
+        expect(state.graph.hasEdge(node2, node1)).toBe(false);
+
+        simulationHistory.goOneRoundBackwards();
+
+        expect(state.graph.getNodes().length).toBe(2);
+        expect(state.graph.hasEdge(node1, node2)).toBe(true);
+        expect(state.graph.hasEdge(node2, node1)).toBe(false);
+    });
+
+    it("throws if there is no edge to remove (apply)", () => {
+        state.graph.removeEdge(node1, node2);
+        var action = new RemoveEdgeAction(node1, node2);
+
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
+
+        expect(state.graph.getNodes().length).toBe(2);
+        expect(state.graph.hasEdge(node1, node2)).toBe(false);
+        expect(state.graph.hasEdge(node2, node1)).toBe(false);
+
+        expect(() => simulationHistory.simulateNextStep()).toThrow();
+    });
+
+    it("throws if the specified edge appears between apply and revert", () => {
+        var action = new RemoveEdgeAction(node1, node2);
+
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [action] };
+        simulationHistory.simulateNextStep();
+        state.graph.addEdge(node1, node2); 
+        expect(() => simulationHistory.goOneRoundBackwards()).toThrow();
+    });
+
 });
