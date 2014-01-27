@@ -7,6 +7,17 @@
         simulateOneRound(state: State) : IAction[];
     }
 
+    class RatedAction {
+        action: IAction;
+        cost: number;
+
+        constructor(action: IAction, cost: number) {
+            this.action = action;
+            this.cost = cost;
+        }
+
+    }
+
     class SequentialSimulator implements ISimulator {
 
         //TODO write spec for this method
@@ -20,14 +31,25 @@
                 //find all possible actions
                 var possibleActionsForPlayer: IAction[] = SimulatorBase.getPossibleActionForPlayer(playerNode, currentState);
 
-                //find the best action
+                //rate all actions
+                var ratedActions:RatedAction[] = [];
+                _.each(possibleActionsForPlayer, (action) => { ratedActions.push(SimulatorBase.rateAction(playerNode, action, currentState)); });
+
+                //select the best action
+                var bestAction:RatedAction = _.first(_.sortBy(ratedActions, action=> action.cost));
+
+                //remember action
+                actionsToPerform.push(bestAction.action);
+
+                //apply action to state (special case for simulating sequential playing)
+                bestAction.action.apply(currentState);
+
             });
 
             //revert all actions to fullfill contract of not permanently modifying currentState
             _.each(actionsToPerform, action=> action.revert(currentState));
             return actionsToPerform;
         }
-
     }
 
     class ParallelSimulator implements ISimulator {
@@ -41,7 +63,6 @@
 
     class SimulatorBase {
 
-        //TODO write SPEC for this method
         static getPossibleActionForPlayer(playerNode: INode<NodeData>, state: State): IAction[] {
             if (playerNode == null) {
                 return [];
@@ -62,6 +83,27 @@
                 }
             });
             return possibleActions;
+        }
+
+        static rateAction(playerNode:INode<NodeData>, action:IAction, state:State): RatedAction {
+            //temporary apply selected action and calculate cost
+            action.apply(state);
+
+            var nodes = state.graph.getNodes();
+            __.removeArrayItem(nodes, playerNode);
+            var connectionCosts = _.reduce(nodes,
+                (costs: number, targetNode: INode<NodeData>)=> costs + state.calculatePartialConnectionCosts(playerNode, targetNode),
+                0.0);
+
+            var operatingCosts = _.reduce(playerNode.connectedEdges,
+                (costs: number, targetNode: INode<NodeData>)=> costs + state.calculatePartialOperatingCosts(playerNode, targetNode),
+                0.0);
+
+            var totalCosts = connectionCosts + operatingCosts;
+
+            action.revert(state);
+
+            return new RatedAction(action, totalCosts);
         }
 
     }
