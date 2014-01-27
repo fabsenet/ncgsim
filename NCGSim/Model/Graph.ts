@@ -43,7 +43,7 @@
         }
 
         removeEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
-            removeArrayItem(startNode.connectedEdges, endNode);
+            __.removeArrayItem(startNode.connectedEdges, endNode);
         }
 
 
@@ -56,11 +56,11 @@
         }
 
         removeNode(node: INode<TNodePayload>) {
-            removeArrayItem(this.nodes, node);
+            __.removeArrayItem(this.nodes, node);
         }
 
         getNodes(): INode<TNodePayload>[] {
-            return this.nodes;
+            return _.clone(this.nodes);
         }
 
     }
