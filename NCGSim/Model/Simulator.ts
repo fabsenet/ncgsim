@@ -13,12 +13,17 @@
         simulateOneRound(currentState: State): IAction[] {
 
             var actionsToPerform: IAction[] = [];
+
+            //for each player
             _.each(currentState.graph.getNodes(), playerNode=> {
 
+                //find all possible actions
                 var possibleActionsForPlayer: IAction[] = SimulatorBase.getPossibleActionForPlayer(playerNode, currentState);
+
+                //find the best action
             });
 
-            //revert all actions to fullfill contract of not permanently modifying  currentState
+            //revert all actions to fullfill contract of not permanently modifying currentState
             _.each(actionsToPerform, action=> action.revert(currentState));
             return actionsToPerform;
         }
@@ -37,11 +42,15 @@
     class SimulatorBase {
 
         //TODO write SPEC for this method
-        static getPossibleActionForPlayer(playerNode: INode<NodeData>, state): IAction[] {
-            var possibleActions: IAction[] = [];
+        static getPossibleActionForPlayer(playerNode: INode<NodeData>, state: State): IAction[] {
+            if (playerNode == null) {
+                return [];
+            }
+
+            var possibleActions: IAction[] = [new NoOpAction()];
 
             //buildNodeActions and removeNodeActions
-            _.each(state.getNodes(), (node: INode<NodeData>) => {
+            _.each(state.graph.getNodes(), (node: INode<NodeData>) => {
                 if (node === playerNode) return;
 
                 if (state.graph.hasEdge(playerNode, node)) {

@@ -1,6 +1,14 @@
 /// <reference path="_references.ts" />
 
 
+class NoOpAction implements  IAction {
+
+    apply(state: State): void {}
+
+    revert(state: State): void {}
+
+}
+
  class BuildEdgeAction implements IAction {
 
      startNode: INode<NodeData>;

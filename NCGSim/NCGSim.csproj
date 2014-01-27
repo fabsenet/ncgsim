@@ -81,6 +81,7 @@
     <TypeScriptCompile Include="Model\UnitTests\BuildActionTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulationCoreTests.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\SimulatorFactoryTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulatorTests.ts" />
     <TypeScriptCompile Include="Model\_references.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
