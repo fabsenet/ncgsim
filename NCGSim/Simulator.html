@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html ng-app="simulatorController">
+    <head>
+        <script src="Model/ArrayHelper.js"></script>
+        <script src="Model/BuildActions.js"></script>
+        <script src="Model/Graph.js"></script>
+        <script src="Model/SimulationCore.js"></script>
+        <script src="Model/Simulator.js"></script>
+        <script src="Model/State.js"></script>
+
+        <script src="Scripts/angular.min.js"></script>
+        <script src="Scripts/ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+        <script src="Controller/SimulatorController.js"></script>
+
+        <link href="Content/font-awesome.min.css" rel="stylesheet" />
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    </head>
+<body>
+    <div ng-controller="ButtonsCtrl">
+        <h1>Network Creation Games</h1>
+        <h2>A Simulator</h2>
+        <input type="text" ng-model="sometext"/>
+        <pre>{{singleModel}}</pre>
+        <button type="button" class="btn btn-primary" ng-model="singleModel" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+            Single Toggle
+        </button>
+        <h4>Checkbox</h4>
+        <pre>{{checkModel}}</pre>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-model="checkModel.left" btn-checkbox>Left</button>
+            <button type="button" class="btn btn-primary" ng-model="checkModel.middle" btn-checkbox>Middle</button>
+            <button type="button" class="btn btn-primary" ng-model="checkModel.right" btn-checkbox>Right</button>
+        </div>
+        <h4>Radio</h4>
+        <pre>{{radioModel}}</pre>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Left</button>
+            <button type="button" class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'">Middle</button>
+            <button type="button" class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Right</button>
+        </div>
+    </div>
+</body>
+</html>
