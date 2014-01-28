@@ -349,7 +349,7 @@ declare module jasmine {
 
         identity: string;
         and: SpyAnd;
-        calls: any[];
+        calls: {count:()=>number};
         mostRecentCall: { args: any[]; };
         argsForCall: any[];
         wasCalled: boolean;
