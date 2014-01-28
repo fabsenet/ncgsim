@@ -1,6 +1,6 @@
-﻿// Type definitions for Jasmine 2.0
+// Type definitions for Jasmine 2.0
 // Project: http://pivotal.github.com/jasmine/
-// Definitions by: Boris Yankov <https://github.com/borisyankov/> and Theodore Brown <https://github.com/theodorejb>
+// Definitions by: Boris Yankov <https://github.com/borisyankov/>, Theodore Brown <https://github.com/theodorejb>
 // DefinitelyTyped: https://github.com/borisyankov/DefinitelyTyped
 
 
@@ -349,7 +349,7 @@ declare module jasmine {
 
         identity: string;
         and: SpyAnd;
-        calls: { count: () => number }; //TODO: provide pull request for DefinitelyTyped: https://github.com/borisyankov/DefinitelyTyped
+        calls: any[];
         mostRecentCall: { args: any[]; };
         argsForCall: any[];
         wasCalled: boolean;
