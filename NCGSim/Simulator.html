@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html ng-app="simulatorController">
+<html ng-app="SimulatorApp">
     <head>
         <script src="Model/ArrayHelper.js"></script>
         <script src="Model/BuildActions.js"></script>
@@ -11,34 +11,70 @@
         <script src="Scripts/angular.min.js"></script>
         <script src="Scripts/ui-bootstrap-tpls-0.10.0.min.js"></script>
 
-        <script src="Controller/SimulatorController.js"></script>
+        <script src="Controller/SimulatorApp.js"></script>
 
         <link href="Content/font-awesome.min.css" rel="stylesheet" />
         <link href="Content/bootstrap.min.css" rel="stylesheet" />
     </head>
 <body>
-    <div ng-controller="ButtonsCtrl">
-        <h1>Network Creation Games</h1>
-        <h2>A Simulator</h2>
-        <input type="text" ng-model="sometext"/>
-        <pre>{{singleModel}}</pre>
-        <button type="button" class="btn btn-primary" ng-model="singleModel" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
-            Single Toggle
-        </button>
-        <h4>Checkbox</h4>
-        <pre>{{checkModel}}</pre>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary" ng-model="checkModel.left" btn-checkbox>Left</button>
-            <button type="button" class="btn btn-primary" ng-model="checkModel.middle" btn-checkbox>Middle</button>
-            <button type="button" class="btn btn-primary" ng-model="checkModel.right" btn-checkbox>Right</button>
+    <div class="container" ng-controller="stateCtrl">
+
+        <div class="page-header">
+            <h1>NCGSim - A Network Creation Games Simulator</h1>
+            <p class="lead">
+                This simulator simulates several independ nodes acting in a graph via building and removing edges to egoistically reduce their own costs
+            </p>
         </div>
-        <h4>Radio</h4>
-        <pre>{{radioModel}}</pre>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Left</button>
-            <button type="button" class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'">Middle</button>
-            <button type="button" class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Right</button>
+        <h2>Setup</h2>
+        <h3>Graph</h3>
+        <h3>Cost Functions</h3>
+        <div>
+            The cost function is splitted up to allow a simpler declaration.
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>PartialOperatingCosts</h4>
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
+                    <pre>{{calculatePartialOperatingCosts}}</pre>
+                </div>
+                <div class="col-md-6">
+                    <h4>PartialConnectionCosts</h4>
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
+                    <pre>{{calculatePartialConnectionCosts}}</pre>
+                </div>
+            </div>
         </div>
-    </div>
+        <h3>Game Settings</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>OperationMode</h4>
+                You can select the operation mode of all players. Either they act sequentially or in parallel each round.
+                <pre>{{operationMode}}</pre>
+                <pre>{{readableOperationMode()}}</pre>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" ng-model="operationMode" btn-radio="0">SEQUENTIAL</button>
+                    <button type="button" class="btn btn-primary" ng-model="operationMode" btn-radio="1">PARALLEL</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4>GameManipulation</h4>
+                Here you can provide a manipulating function which is called in between each round to edit the simulation.
+                <div class="alert alert-info"><i class="fa fa-info-circle"></i> This is not implemented yet.</div>
+                <pre>{{gameManipulation}}</pre>
+            </div>
+        </div>
+
+        <hr>
+        <h2>Simulation Log</h2>
+        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
+
+
+        <hr>
+        <h2>Final Graph</h2>
+        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
+
+
+
+    </div> <!-- /container -->
+
 </body>
 </html>

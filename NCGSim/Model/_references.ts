@@ -7,4 +7,6 @@
 
 
 /// <reference path="../scripts/typings/underscore/underscore.d.ts" />
+
+/// <reference path="../scripts/typings/angularjs/angular.d.ts" />
  

@@ -1,1 +1,0 @@
-{"version":3,"file":"SimulatorController.js","sourceRoot":"","sources":["SimulatorController.ts"],"names":[],"mappings":"AAAA,gDAAgD;AAGhD,OAAO,CAAC,MAAM,CAAC,qBAAqB,EAAE,CAAC,cAAc,CAAC,CAAC;AACvD,IAAI,WAAW,GAAG,UAAU,MAAM;IAC9B,IAAI,KAAK,GAAG,IAAI,KAAK,CAAC,CAAC;IACvB,MAAM,CAAC,QAAQ,GAAG,KAAK,CAAC,+BAA+B,CAAC,QAAQ,CAAC,CAAC;AACtE,CAAC"}
