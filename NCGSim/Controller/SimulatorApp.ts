@@ -1,18 +1,48 @@
 /// <reference path="../model/_references.ts" />
 
-
 angular.module('SimulatorApp', ['ui.bootstrap']);
-var stateCtrl = function ($scope) {
+var stateCtrl = function($scope:ng.IScope) {
     var state = new State();
+    state.graph.addNode(new NodeData(1, 1));
+    state.graph.addNode(new NodeData(8, 2));
+    state.graph.addNode(new NodeData(3, 7));
 
-    $scope.calculatePartialConnectionCosts = state.calculatePartialConnectionCosts.toString();
-    $scope.calculatePartialOperatingCosts = state.calculatePartialOperatingCosts.toString();
+    $scope.state = state;
 
-    $scope.operationMode = state.gameSettings.operationMode;
-    $scope.readableOperationMode = () => {
-        console.log("computing readableOperationMode. Mode in $scope= '" + $scope.operationMode+"' Mode in model = " + state.gameSettings.operationMode);
-        return state.gameSettings.operationMode == OperationMode.SEQUENTIAL ? "SEQUENTIAL" : "PARALLEL";
+    $scope.vm = {};
+
+    $scope.refresh =() => {
+        $scope.vm.nodes = state.graph.getNodes();
     };
 
-    $scope.gameManipulation = state.gameSettings.gameManipulation == null? "null" : state.gameSettings.gameManipulation.toString();
+    $scope.refresh();
+
+    $scope.vm.addNode = function() {
+        state.graph.addNode(new NodeData(Math.round(Math.random() * 19)+1, Math.round(Math.random() * 19)+1));
+        $scope.refresh();
+    };
+
+    $scope.vm.removeNode = function () {
+        var nodes = state.graph.getNodes();
+        if (nodes.length == 0) return;
+        state.graph.removeNode(_.last(nodes));
+        $scope.refresh();
+    };
+
+    $scope.costs = {
+        calculatePartialConnectionCosts: state.calculatePartialConnectionCosts.toString(),
+        calculatePartialOperatingCosts: state.calculatePartialOperatingCosts.toString()
+    };
+
+    $scope.settings = {
+        gameManipulation: state.gameSettings.gameManipulation == null ? "null" : state.gameSettings.gameManipulation.toString()
+    };
+
+    
+    $scope.vm.readableOperationMode = state.gameSettings.operationMode == OperationMode.SEQUENTIAL ? "SEQUENTIAL" : "PARALLEL";
+
+    $scope.vm.refreshReadableOperationMode = function(selectedMode: OperationMode) {
+        $scope.vm.readableOperationMode = selectedMode == OperationMode.SEQUENTIAL ? "SEQUENTIAL" : "PARALLEL";
+    };
+
 }; 

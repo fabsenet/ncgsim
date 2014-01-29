@@ -1,20 +1,22 @@
 ﻿<!doctype html>
 <html ng-app="SimulatorApp">
     <head>
+
+        <script src="Scripts/angular.js"></script>
+        <script src="Scripts/ui-bootstrap-tpls-0.10.0.js"></script>
+        <script src="Scripts/underscore.js"></script>
+
+        <script src="Controller/SimulatorApp.js"></script>
+
+        <link href="Content/font-awesome.css" rel="stylesheet" />
+        <link href="Content/bootstrap.css" rel="stylesheet" />
+
         <script src="Model/ArrayHelper.js"></script>
         <script src="Model/BuildActions.js"></script>
         <script src="Model/Graph.js"></script>
         <script src="Model/SimulationCore.js"></script>
         <script src="Model/Simulator.js"></script>
         <script src="Model/State.js"></script>
-
-        <script src="Scripts/angular.js"></script>
-        <script src="Scripts/ui-bootstrap-tpls-0.10.0.js"></script>
-
-        <script src="Controller/SimulatorApp.js"></script>
-
-        <link href="Content/font-awesome.css" rel="stylesheet" />
-        <link href="Content/bootstrap.css" rel="stylesheet" />
     </head>
 <body>
     <div class="container" ng-controller="stateCtrl">
@@ -27,54 +29,83 @@
         </div>
         <h2>Setup</h2>
         <h3>Graph</h3>
-        <h3>Cost Functions</h3>
         <div>
-            The cost function is splitted up to allow a simpler declaration.
+            <button class="btn btn-danger" ng-click="vm.removeNode()">Remove Node</button>
+            <button class="btn btn-primary" ng-click="vm.addNode()">Add Node</button>
+        </div>
+        <br />
+
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Node ID</th>
+                            <th>X</th>
+                            <th>Y</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="node in vm.nodes">
+                            <td>{{node.id}}</td>
+                            <td><input style="width:70px" type="number" max="999" maxlength="3" ng-model="node.data.position.x" /></td>
+                            <td><input style="width:70px" type="number" max="999" maxlength="3" ng-model="node.data.position.y" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <pre>{{vm.nodes}}</pre>
+            </div>
+        </div>
+        <div class="row">
+            <h3>Cost Functions</h3>
+            <div>
+                The cost function is splitted up to allow a simpler declaration.
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>PartialOperatingCosts</h4>
+                        <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
+                        <pre>{{costs.calculatePartialOperatingCosts}}</pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>PartialConnectionCosts</h4>
+                        <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
+                        <pre>{{costs.calculatePartialConnectionCosts}}</pre>
+                    </div>
+                </div>
+            </div>
+            <h3>Game Settings</h3>
             <div class="row">
                 <div class="col-md-6">
-                    <h4>PartialOperatingCosts</h4>
-                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
-                    <pre>{{calculatePartialOperatingCosts}}</pre>
+                    <h4>OperationMode</h4>
+                    <p>You can select the operation mode of all players. Either they act sequentially or in parallel each round.</p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary" ng-model="state.gameSettings.operationMode" btn-radio="0" ng-click="vm.refreshReadableOperationMode(0)">SEQUENTIAL</button>
+                        <button type="button" class="btn btn-danger" ng-model="state.gameSettings.operationMode" btn-radio="1" ng-click="vm.refreshReadableOperationMode(1)">PARALLEL</button>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <h4>PartialConnectionCosts</h4>
-                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
-                    <pre>{{calculatePartialConnectionCosts}}</pre>
+                    <h4>GameManipulation</h4>
+                    Here you can provide a manipulating function which is called in between each round to edit the simulation.
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> This is not implemented yet.</div>
+                    <pre>{{settings.gameManipulation}}</pre>
                 </div>
             </div>
-        </div>
-        <h3>Game Settings</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <h4>OperationMode</h4>
-                You can select the operation mode of all players. Either they act sequentially or in parallel each round.
-                <pre>{{operationMode}}</pre>
-                <pre>{{readableOperationMode()}}</pre>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary" ng-model="operationMode" btn-radio="0">SEQUENTIAL</button>
-                    <button type="button" class="btn btn-primary" ng-model="operationMode" btn-radio="1">PARALLEL</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h4>GameManipulation</h4>
-                Here you can provide a manipulating function which is called in between each round to edit the simulation.
-                <div class="alert alert-info"><i class="fa fa-info-circle"></i> This is not implemented yet.</div>
-                <pre>{{gameManipulation}}</pre>
-            </div>
-        </div>
 
-        <hr>
-        <h2>Simulation Log</h2>
-        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
+            <hr>
+            <h2>Simulation Log</h2>
+            <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
 
 
-        <hr>
-        <h2>Final Graph</h2>
-        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
+            <hr>
+            <h2>Final Graph</h2>
+            <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
 
 
 
-    </div> <!-- /container -->
+        </div> <!-- /container -->
 
 </body>
 </html>
