@@ -4,24 +4,26 @@ class StateViewModel {
     nodes: INode<NodeData>[];
     addNode = function () {
         this.state.graph.addNode(new NodeData(Math.round(Math.random() * 19) + 1, Math.round(Math.random() * 19) + 1));
-        this.$scope.refresh();
+        this.refresh();
     };
     removeNode = function () {
         var nodes = this.state.graph.getNodes();
         if (nodes.length == 0) return;
         this.state.graph.removeNode(_.last(nodes));
-        this.$scope.refresh();
+        this.refresh();
     };
 
     refresh = function () {
-        this.$scope.vm.nodes = this.state.graph.getNodes();
+        this.nodes = this.state.graph.getNodes();
     };
 
-    private $scope: stateCtrlScope;
-    private state:State;
-    constructor(scope: stateCtrlScope, state:State) {
-        this.$scope = scope;
-        this.state = state;
+    state: State;
+
+    constructor() {
+        this.state = new State();
+        this.state.graph.addNode(new NodeData(1, 1));
+        this.state.graph.addNode(new NodeData(8, 2));
+        this.state.graph.addNode(new NodeData(3, 7));
 
         this.refresh();
     }
@@ -35,21 +37,18 @@ interface stateCtrlScope extends ng.IScope {
 
 angular.module('SimulatorApp', ['ui.bootstrap']);
 var stateCtrl = function($scope: stateCtrlScope) {
-    var state = new State();
-    state.graph.addNode(new NodeData(1, 1));
-    state.graph.addNode(new NodeData(8, 2));
-    state.graph.addNode(new NodeData(3, 7));
 
-    $scope.state = state;
-    $scope.vm = new StateViewModel($scope, state);
+    var vm = new StateViewModel();
+    $scope.vm = vm;
+    $scope.state = vm.state;
 
-
+    //TODO costs and gameManipulation functions need to done in a proper way too
     $scope.costs = {
-        calculatePartialConnectionCosts: state.calculatePartialConnectionCosts.toString(),
-        calculatePartialOperatingCosts: state.calculatePartialOperatingCosts.toString()
+        calculatePartialConnectionCosts: vm.state.calculatePartialConnectionCosts.toString(),
+        calculatePartialOperatingCosts: vm.state.calculatePartialOperatingCosts.toString()
     };
 
     $scope.settings = {
-        gameManipulation: state.gameSettings.gameManipulation == null ? "null" : state.gameSettings.gameManipulation.toString()
+        gameManipulation: vm.state.gameSettings.gameManipulation == null ? "null" : vm.state.gameSettings.gameManipulation.toString()
     };
 };
