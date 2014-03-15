@@ -1,53 +1,55 @@
 /// <reference path="../model/_references.ts" />
 
-class StateViewModel {
-    nodes: INode<NodeData>[];
-    addNode = function () {
-        this.state.graph.addNode(new NodeData(Math.round(Math.random() * 19) + 1, Math.round(Math.random() * 19) + 1));
-        this.refresh();
-    };
-    removeNode = function () {
-        var nodes = this.state.graph.getNodes();
-        if (nodes.length == 0) return;
-        this.state.graph.removeNode(_.last(nodes));
-        this.refresh();
-    };
+angular.module('SimulatorApp', ['ui.bootstrap']);
 
-    refresh = function () {
-        this.nodes = this.state.graph.getNodes();
-    };
+class StateController {
 
-    state: State;
+    constructor($scope) {
+        $scope.vm = this;
 
-    constructor() {
         this.state = new State();
         this.state.graph.addNode(new NodeData(1, 1));
         this.state.graph.addNode(new NodeData(8, 2));
         this.state.graph.addNode(new NodeData(3, 7));
 
+        this.costs = {
+            calculatePartialConnectionCosts: this.state.calculatePartialConnectionCosts.toString(),
+            calculatePartialOperatingCosts: this.state.calculatePartialOperatingCosts.toString()
+        };
+
+        this.settings = {
+            gameManipulation: this.state.gameSettings.gameManipulation == null ? "null" : this.state.gameSettings.gameManipulation.toString()
+        };
+
         this.refresh();
     }
-}
 
-interface stateCtrlScope extends ng.IScope {
     state: State;
-    vm: StateViewModel;
-    refresh: () => void;
+    nodes: INode<NodeData>[];
+
+
+    costs: {
+        calculatePartialConnectionCosts: string;
+        calculatePartialOperatingCosts: string;
+    };
+
+    settings: { gameManipulation: string };
+
+
+    addNode() {
+        this.state.graph.addNode(new NodeData(Math.round(Math.random() * 19) + 1, Math.round(Math.random() * 19) + 1));
+        this.refresh();
+    }
+
+    removeNode() {
+        var nodes = this.state.graph.getNodes();
+        if (nodes.length == 0) return;
+        this.state.graph.removeNode(_.last(nodes));
+        this.refresh();
+    }
+
+    refresh() {
+        this.nodes = this.state.graph.getNodes();
+    }
+
 }
-
-angular.module('SimulatorApp', ['ui.bootstrap']);
-var stateCtrl = function($scope: stateCtrlScope) {
-
-    var vm = new StateViewModel();
-    $scope.vm = vm;
-
-    //TODO costs and gameManipulation functions need to done in a proper way too
-    $scope.costs = {
-        calculatePartialConnectionCosts: vm.state.calculatePartialConnectionCosts.toString(),
-        calculatePartialOperatingCosts: vm.state.calculatePartialOperatingCosts.toString()
-    };
-
-    $scope.settings = {
-        gameManipulation: vm.state.gameSettings.gameManipulation == null ? "null" : vm.state.gameSettings.gameManipulation.toString()
-    };
-};
