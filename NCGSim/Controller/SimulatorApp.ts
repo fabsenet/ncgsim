@@ -40,7 +40,6 @@ var stateCtrl = function($scope: stateCtrlScope) {
 
     var vm = new StateViewModel();
     $scope.vm = vm;
-    $scope.state = vm.state;
 
     //TODO costs and gameManipulation functions need to done in a proper way too
     $scope.costs = {
