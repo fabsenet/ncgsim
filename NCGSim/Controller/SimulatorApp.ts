@@ -2,7 +2,7 @@
 
 angular.module('SimulatorApp', ['ui.bootstrap']);
 
-class StateController {
+class stateCtrl {
 
     constructor($scope) {
         $scope.vm = this;
