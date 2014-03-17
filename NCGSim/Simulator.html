@@ -6,6 +6,7 @@
     <script src="Scripts/ui-bootstrap-tpls-0.10.0.js"></script>
     <script src="Scripts/underscore.js"></script>
 
+    <script src="Directives/graphviz.js"></script>
     <script src="Controller/SimulatorApp.js"></script>
 
     <link href="Content/font-awesome.css" rel="stylesheet" />
@@ -54,12 +55,13 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="col-lg-6">
                 <pre>{{vm.nodes}}</pre>
             </div>
+            <div class="col-lg-6">
+                <div data-graphviz data-graph="vm.state.graph"></div>
+            </div>
         </div>
-        <h3>Cost Functions</h3>
+        <h3>Cost Function</h3>
         <div class="row">
             <div class="col-lg-12">
                 The cost function is splitted up to allow a simpler declaration.

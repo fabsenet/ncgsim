@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Controller\SimulatorApp.ts" />
+    <TypeScriptCompile Include="Directives\graphviz.ts" />
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
     <TypeScriptCompile Include="Model\BuildActions.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
@@ -371,6 +372,7 @@
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Simulator.html" />
     <Content Include="SpecRunner.html" />
+    <Content Include="Templates\Directives\graphviz.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>graphviz template</title>
+    </head>
+    <body>
+
+        <svg ng-attr-width="{{vm.width}}" ng-attr-height="{{vm.height}}" ng-controller="graphvizCtrl">
+
+            <line ng-attr-x1="{{line.x1}}" ng-attr-y1="{{line.y1}}"
+                  ng-attr-x2="{{line.x2}}" ng-attr-y2="{{line.y2}}"
+                  style="stroke: rgb(255, 0, 0); stroke-width: 2"
+                  ng-repeat="line in vm.lines" />
+
+
+            <circle ng-attr-cx="{{node.data.position.x}}" ng-attr-cy="{{node.data.position.y}}" ng-attr-r="{{vm.radius}}" ng-repeat="node in graph.nodes" />
+        </svg>
+
+
+    </body>
+</html>

@@ -1,6 +1,6 @@
 /// <reference path="../model/_references.ts" />
 
-angular.module('SimulatorApp', ['ui.bootstrap']);
+angular.module('SimulatorApp', ['ui.bootstrap', 'app.directives.graphviz']);
 
 class stateCtrl {
 
@@ -8,9 +8,9 @@ class stateCtrl {
         $scope.vm = this;
 
         this.state = new State();
-        this.state.graph.addNode(new NodeData(1, 1));
-        this.state.graph.addNode(new NodeData(8, 2));
-        this.state.graph.addNode(new NodeData(3, 7));
+        this.state.graph.addNode(new NodeData(30, 30));
+        this.state.graph.addNode(new NodeData(80, 200));
+        this.state.graph.addNode(new NodeData(123, 70));
 
         this.costs = {
             calculatePartialConnectionCosts: this.state.calculatePartialConnectionCosts.toString(),
@@ -27,7 +27,6 @@ class stateCtrl {
     state: State;
     nodes: INode<NodeData>[];
 
-
     costs: {
         calculatePartialConnectionCosts: string;
         calculatePartialOperatingCosts: string;
@@ -37,7 +36,7 @@ class stateCtrl {
 
 
     addNode() {
-        this.state.graph.addNode(new NodeData(Math.round(Math.random() * 19) + 1, Math.round(Math.random() * 19) + 1));
+        this.state.graph.addNode(new NodeData(Math.round(Math.random() * 300) + 1, Math.round(Math.random() * 300) + 1));
         this.refresh();
     }
 
