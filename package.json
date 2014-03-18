@@ -1,0 +1,32 @@
+{
+  "name": "ncgsim",
+  "version": "0.0.0",
+  "description": "A network creation games simulator",
+  "main": "index.js",
+  "dependencies": {
+    "karma": "~0.12.1",
+    "karma-chrome-launcher": "~0.1.2",
+    "karma-jasmine": "~0.1.5"
+  },
+  "devDependencies": {
+    "karma": "^0.12.1",
+    "karma-chrome-launcher": "^0.1.2",
+    "karma-jasmine": "^0.2.2",
+    "karma-ie-launcher": "^0.1.3",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-phantomjs-launcher": "^0.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabsenet/ncgsim.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabsenet/ncgsim/issues"
+  },
+  "homepage": "https://github.com/fabsenet/ncgsim"
+}
