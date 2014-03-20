@@ -27,6 +27,7 @@ class stateCtrl {
     state: State;
     nodes: INode<NodeData>[];
 
+
     costs: {
         calculatePartialConnectionCosts: string;
         calculatePartialOperatingCosts: string;
@@ -34,6 +35,11 @@ class stateCtrl {
 
     settings: { gameManipulation: string };
 
+    selectedNode: INode<NodeData> = null;
+
+    selectNode(node: INode<NodeData>) {
+        this.selectedNode = node;
+    }
 
     addNode() {
         this.state.graph.addNode(new NodeData(Math.round(Math.random() * 300) + 1, Math.round(Math.random() * 300) + 1));

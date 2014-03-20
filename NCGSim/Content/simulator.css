@@ -1,0 +1,35 @@
+﻿.svg-fill {
+    width: 100%;
+    height: 100%;
+}
+
+.svg-border {
+    border: 1px solid #ddd;
+    -ms-border-radius: 4px;
+}
+
+svg text {
+    cursor: default;
+}
+
+svg .clickable {
+    cursor: pointer;
+}
+
+svg circle.node {
+    stroke: black;
+    fill: lightgreen;
+}
+
+svg circle.selectedNode {
+    fill: lightcoral;
+}
+
+svg text.node {
+    fill: black;
+    text-anchor: middle;
+}
+
+.table .table-selected-row td {
+    background-color: lightcoral !important;
+}
