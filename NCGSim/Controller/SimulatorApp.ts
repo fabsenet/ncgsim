@@ -1,6 +1,6 @@
 /// <reference path="../model/_references.ts" />
 
-angular.module('SimulatorApp', ['ui.bootstrap', 'app.directives.graphviz']);
+angular.module('SimulatorApp', ['ui.bootstrap', 'app.directives.graphviz', 'app.directives.ncgversion']);
 
 class stateCtrl {
 

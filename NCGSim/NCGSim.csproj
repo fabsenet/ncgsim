@@ -61,6 +61,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Controller\SimulatorApp.ts" />
     <TypeScriptCompile Include="Directives\graphviz.ts" />
+    <TypeScriptCompile Include="Directives\ncgversion.ts" />
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
     <TypeScriptCompile Include="Model\BuildActions.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
@@ -374,6 +375,7 @@
     <Content Include="Simulator.html" />
     <Content Include="SpecRunner.html" />
     <Content Include="Templates\Directives\graphviz.html" />
+    <Content Include="version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -444,7 +446,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>powershell -ExecutionPolicy unrestricted -file  $(ProjectDir)generate_version_file.ps1 $(TargetDir)version.txt</PreBuildEvent>
+    <PreBuildEvent>powershell -ExecutionPolicy unrestricted -file  $(ProjectDir)generate_version_file.ps1 $(ProjectDir)version.txt</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

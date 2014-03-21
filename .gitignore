@@ -153,3 +153,6 @@ $RECYCLE.BIN/
 
 # node modules can be recreated using npm install
 node_modules/
+
+#the version.txt is genereted in a pre-build event so it should not be checked in
+NCGSim/version.txt
