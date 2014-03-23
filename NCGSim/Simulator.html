@@ -33,15 +33,14 @@
     <div class="container">
         <h2>Setup</h2>
         <h3>Graph</h3>
-        <div>
-            <button class="btn btn-danger" ng-click="vm.removeNode()">Remove Node</button>
-            <button class="btn btn-primary" ng-click="vm.addNode()">Add Node</button>
-        </div>
-        <br />
-
-
         <div class="row">
             <div class="col-lg-6">
+                <h3>Nodes</h3>
+                <div>
+                    <button class="btn btn-danger" ng-click="vm.removeNode()">Remove Node</button>
+                    <button class="btn btn-primary" ng-click="vm.addNode()">Add Node</button>
+                </div>
+                <br />
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
@@ -53,15 +52,38 @@
                     <tbody>
                         <tr ng-repeat="node in vm.nodes" ng-click="vm.selectNode(node)" class="{{node == vm.selectedNode ? 'table-selected-row':''}}">
                             <td>{{node.id}}</td>
-                            <td><input style="width:70px" type="number" max="999" maxlength="3" ng-model="node.data.position.x" /></td>
-                            <td><input style="width:70px" type="number" max="999" maxlength="3" ng-model="node.data.position.y" /></td>
+                            <td><input style="width:70px" type="number" min="-999" max="999" maxlength="3" ng-model="node.data.position.x" /></td>
+                            <td><input style="width:70px" type="number" min="-999" max="999" maxlength="3" ng-model="node.data.position.y" /></td>
                         </tr>
                     </tbody>
                 </table>
-                <pre>{{vm.nodes}}</pre>
-                <pre>{{vm.selectedNode}}</pre>
+                <hr/>
+                <h3>Edges</h3>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Start Node</th>
+                            <th>End Node</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="edge in vm.edges"">
+                            <td>{{edge.startNode.id}}</td>
+                            <td>{{edge.endNode.id}}</td>
+                            <td><button class="btn btn-danger" ng-click="vm.state.graph.removeEdge(edge.startNode, edge.endNode)">Remove Edge</button></td>
+                        </tr>
+                        <tr>
+                            <td><select required ng-options="node.id for node in vm.nodes" ng-model="vm.startnode"></select></td>
+                            <td><select required ng-options="node.id for node in vm.nodes" ng-model="vm.endnode"></select></td>
+                            <td><button class="btn btn-primary" ng-click="vm.state.graph.addEdge(vm.startnode, vm.endnode)"
+                                        ng-disabled="!vm.startnode || !vm.endnode || vm.startnode==vm.endnode || vm.state.graph.hasEdge(vm.startnode, vm.endnode)">Add Edge</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="col-lg-6">
+                <h3>Visualization</h3>
                 <div data-graphviz data-graph="vm.state.graph" data-selected-node="vm.selectedNode" data-node-clicked="vm.selectNode(node)" data-has-border="true" style="height: 400px;"></div>
             </div>
         </div>
