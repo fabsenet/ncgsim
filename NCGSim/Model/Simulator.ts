@@ -96,7 +96,7 @@
                 0.0);
 
             var operatingCosts = _.reduce(playerNode.connectedEdges,
-                (costs: number, targetNode: INode<NodeData>)=> costs + state.calculatePartialOperatingCosts(playerNode, targetNode),
+                (costs: number, targetNodeId: number)=> costs + state.calculatePartialOperatingCosts(playerNode, state.graph.getNodeById(targetNodeId)),
                 0.0);
 
             var totalCosts = connectionCosts + operatingCosts;
