@@ -28,6 +28,8 @@ interface ILine {
     y1: number;
     x2: number;
     y2: number;
+    hasStartArrow?: boolean;
+    hasEndArrow?: boolean;
 }
 
 class graphvizCtrl {
@@ -52,13 +54,30 @@ class graphvizCtrl {
 
         this.lines = [];
         nodes.forEach((startNode: INode<NodeData>)=> {
-            startNode.connectedEdges.forEach((endNode: INode<NodeData>)=> {
-                this.lines.push({
+            startNode.connectedEdges.forEach((endNodeId: number) => {
+                var endNode = this.graph.getNodeById(endNodeId);
+                var currentline = {
                     x1: startNode.data.position.x,
                     y1: startNode.data.position.y,
                     x2: endNode.data.position.x,
-                    y2: endNode.data.position.y
+                    y2: endNode.data.position.y,
+                    hasEndArrow: true
+            };
+
+                var currentlineReversed = _.findWhere(this.lines, {
+                    x1: endNode.data.position.x,
+                    y1: endNode.data.position.y,
+                    x2: startNode.data.position.x,
+                    y2: startNode.data.position.y
                 });
+
+                if (currentlineReversed == null) {
+                    this.lines.push(currentline);
+                } else {
+                    //the reversed edge exist, add marker
+                    currentlineReversed.hasStartArrow = true;
+                }
+                
             });
 
             //search dimension of node area

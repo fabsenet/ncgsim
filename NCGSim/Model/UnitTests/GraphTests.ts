@@ -107,4 +107,38 @@ describe("A Graph", () => {
         var node = graph.addNode(null);
         expect(()=> graph.addEdge(node, node)).toThrowError();
     });
+
+    it("can be serialized even if it has a circle of edges", ()=> {
+        var n1 = graph.addNode("1");
+        var n2 = graph.addNode("2");
+        var n3 = graph.addNode("3");
+
+        // 1 => 2 => 3 => 1* ==circular
+        graph.addEdge(n1, n2);
+        graph.addEdge(n2, n3);
+        graph.addEdge(n3, n1);
+
+        expect(()=> { JSON.stringify(graph); }).not.toThrow();
+    });
+
+    it("get nodes by id", ()=> {
+        var n1 = graph.addNode("1");
+        var n2 = graph.addNode("2");
+
+        expect(graph.getNodeById(n1.id)).toBe(n1);
+        expect(graph.getNodeById(n2.id)).toBe(n2);
+    });
+
+    it("get nodes by id but returns null if the id is not known", () => {
+        expect(graph.getNodeById(22)).toBeNull();
+    });
+
+    it("get nodes by id but only if they are not deleted", () => {
+
+        expect(graph.getNodeById(1)).toBeNull();
+        var n1 = graph.addNode("1");
+        expect(graph.getNodeById(n1.id)).toBe(n1);
+        graph.removeNode(n1);
+        expect(graph.getNodeById(n1.id)).toBeNull();
+    });
 });

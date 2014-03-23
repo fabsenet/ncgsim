@@ -3,12 +3,25 @@
      vbox="{{vm.minx-1.3*vm.radius}} {{vm.miny-1.3*vm.radius}} {{(vm.maxx-vm.minx)+2*1.3*vm.radius}} {{(vm.maxy-vm.miny)+2*1.3*vm.radius}}"
      ng-controller="graphvizCtrl"
      ng-attr-class="{{hasBorder?'svg-border':''}} svg-fill">
+    
+    <defs>
+        <marker id="markerStartArrow" markerWidth="41" markerHeight="41" refx="-8" refy="6"
+                orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M2,3 L10,6 L2,9 L2,3" transform="rotate(180,6,6)" />
+        </marker>
+
+        <marker id="markerEndArrow" markerWidth="41" markerHeight="41" refx="20" refy="6"
+                orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M2,3 L10,6 L2,9 L2,3" />
+        </marker>
+    </defs>
+
 
     <line ng-attr-x1="{{line.x1}}" ng-attr-y1="{{line.y1}}"
           ng-attr-x2="{{line.x2}}" ng-attr-y2="{{line.y2}}"
-          style="stroke: rgb(255, 0, 0); stroke-width: 2"
+          ng-attr-class="edge {{line.hasStartArrow ? 'edge-start-arrow' : ''}} {{line.hasEndArrow ? 'edge-end-arrow' : ''}}"
           ng-repeat="line in vm.lines" />
-
+    
 
     <circle ng-attr-cx="{{node.data.position.x}}"
             ng-attr-cy="{{node.data.position.y}}"
@@ -23,4 +36,8 @@
           ng-repeat="node in graph.nodes"
           ng-click="vm.selectNode(node)"
           class="clickable node">{{node.id}}</text>
+    
+
+
+
 </svg>

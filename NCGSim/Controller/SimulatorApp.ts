@@ -38,7 +38,11 @@ class stateCtrl {
     selectedNode: INode<NodeData> = null;
 
     selectNode(node: INode<NodeData>) {
-        this.selectedNode = node;
+        if (this.selectedNode == node) {
+            this.selectedNode = null;
+        } else {
+            this.selectedNode = node;
+        }
     }
 
     addNode() {

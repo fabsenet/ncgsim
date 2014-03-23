@@ -18,7 +18,7 @@ svg .clickable {
 
 svg circle.node {
     stroke: black;
-    fill: lightgreen;
+    fill: rgb(244, 244, 244);
 }
 
 svg circle.selectedNode {
@@ -49,4 +49,22 @@ border-top: 5px solid #515151;
 
 .footer h1 {
     font-size: 25px;
+}
+
+
+line.edge {
+    stroke: rgb(120, 120, 120);
+    stroke-width: 2;
+}
+
+line.edge-start-arrow {
+    marker-start: url(#markerStartArrow);
+}
+line.edge-end-arrow {
+    marker-end: url(#markerEndArrow);
+}
+
+#markerEndArrow, #markerStartArrow {
+    stroke: rgb(55, 55, 55);
+    fill:rgb(55, 55, 55);
 }
