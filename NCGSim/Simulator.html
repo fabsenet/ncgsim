@@ -1,7 +1,7 @@
 ﻿<!doctype html>
 <html ng-app="SimulatorApp">
 <head>
-
+    <title>NCGSim - A Network Creation Games Simulator</title>
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/ui-bootstrap-tpls-0.10.0.js"></script>
     <script src="Scripts/underscore.js"></script>
@@ -24,12 +24,12 @@
 </head>
 <body ng-controller="stateCtrl">
 
-        <div class="jumbotron text-center">
-            <h1>NCGSim - A Network Creation Games Simulator</h1>
-            <p class="lead">
-                This simulator simulates several independ nodes acting in a graph via building and removing edges to egoistically reduce their own costs
-            </p>
-        </div>
+    <div class="jumbotron text-center">
+        <h1>NCGSim - A Network Creation Games Simulator</h1>
+        <p class="lead">
+            This simulator simulates several independ nodes acting in a graph via building and removing edges to egoistically reduce their own costs
+        </p>
+    </div>
     <div class="container">
         <h2>Setup</h2>
         <h3>Graph</h3>
@@ -57,7 +57,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <hr/>
+                <hr />
                 <h3>Edges</h3>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
@@ -68,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="edge in vm.edges"">
+                        <tr ng-repeat="edge in vm.edges">
                             <td>{{edge.startNode.id}}</td>
                             <td>{{edge.endNode.id}}</td>
                             <td><button class="btn btn-danger" ng-click="vm.state.graph.removeEdge(edge.startNode, edge.endNode)">Remove Edge</button></td>
@@ -76,8 +76,12 @@
                         <tr>
                             <td><select required ng-options="node.id for node in vm.nodes" ng-model="vm.startnode"></select></td>
                             <td><select required ng-options="node.id for node in vm.nodes" ng-model="vm.endnode"></select></td>
-                            <td><button class="btn btn-primary" ng-click="vm.state.graph.addEdge(vm.startnode, vm.endnode)"
-                                        ng-disabled="!vm.startnode || !vm.endnode || vm.startnode==vm.endnode || vm.state.graph.hasEdge(vm.startnode, vm.endnode)">Add Edge</button></td>
+                            <td>
+                                <button class="btn btn-primary" ng-click="vm.state.graph.addEdge(vm.startnode, vm.endnode)"
+                                        ng-disabled="!vm.startnode || !vm.endnode || vm.startnode==vm.endnode || vm.state.graph.hasEdge(vm.startnode, vm.endnode)">
+                                    Add Edge
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -123,12 +127,33 @@
 
         <hr>
         <h2>Simulation Log</h2>
-        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
+        <button class="btn btn-success" ng-click="vm.history.simulateNextStep()">Simulate One Step</button>
+        <div>
+            <ol>
+                <li class="" ng-repeat="actions in vm.history.actionsByRound">
+                    <ul>
+                        <li ng-repeat="action in actions | filter:vm.isNotANoOpAction" >
+                            <div ng-switch on="action.typename">
+                                <div ng-switch-when="BuildEdgeAction">
+                                    {{action.typename}}: {{action.startNode.id}} => {{action.endNode.id}}
+                                </div>
 
+                                <div ng-switch-when="NoOpAction">NoOp (filtered!)</div>
+
+                                <div ng-switch-default>
+                                    <!-- TODO: Provide template for all action types -->
+                                    Unknown Action: {{action}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
 
         <hr>
         <h2>Final Graph</h2>
-        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> not implemented yet.</div>
+        <div data-graphviz data-graph="vm.state.graph" data-has-border="true" style="height: 600px;margin-bottom: 40px;"></div>
 
 
     </div> <!-- /container -->

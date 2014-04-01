@@ -1,7 +1,9 @@
 /// <reference path="_references.ts" />
 
 
-class NoOpAction implements  IAction {
+class NoOpAction implements IAction {
+
+    typename = "NoOpAction";
 
     apply(state: State): void {}
 
@@ -10,6 +12,7 @@ class NoOpAction implements  IAction {
 }
 
  class BuildEdgeAction implements IAction {
+     typename = "BuildEdgeAction";
 
      startNode: INode<NodeData>;
      endNode: INode<NodeData>;
@@ -33,6 +36,7 @@ class NoOpAction implements  IAction {
  }
 
 class RemoveEdgeAction implements IAction {
+    typename = "RemoveEdgeAction";
 
      startNode: INode<NodeData>;
      endNode: INode<NodeData>;
@@ -56,6 +60,7 @@ class RemoveEdgeAction implements IAction {
  }
 
  class BuildNodeAction implements IAction {
+     typename = "BuildNodeAction";
 
      nodeData: NodeData;
      node: INode<NodeData>;

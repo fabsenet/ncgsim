@@ -1,6 +1,13 @@
 /// <reference path="../_references.ts" />
 /// <reference path="../../scripts/typings/jasmine/jasmine.d.ts" />
 
+describe("A NoOpAction", ()=> {
+
+    it("returns the correct typename", () => {
+        var action = new NoOpAction();
+        expect(action.typename).toBe("NoOpAction");
+    });
+});
 
 describe("A BuildNodeAction", () => {
 
@@ -11,6 +18,12 @@ describe("A BuildNodeAction", () => {
         state = new State();
         state.gameSettings.operationMode = OperationMode.UNITTEST;
         simulationHistory = new SimulationHistory(state);
+    });
+
+    it("returns the correct typename", ()=> {
+        var nodedata = new NodeData(12, 5);
+        var action = new BuildNodeAction(nodedata);
+        expect(action.typename).toBe("BuildNodeAction");
     });
 
     it("builds a node and reverts it", () => {
@@ -43,6 +56,11 @@ describe("A BuildEdgeAction", () => {
         node2 = state.graph.addNode(new NodeData(1, 2));
         state.gameSettings.operationMode = OperationMode.UNITTEST;
         simulationHistory = new SimulationHistory(state);
+    });
+
+    it("returns the correct typename", () => {
+        var action = new BuildEdgeAction(node1, node2);
+        expect(action.typename).toBe("BuildEdgeAction");
     });
 
     it("builds an edge and reverts it", () => {
@@ -105,6 +123,11 @@ describe("A RemoveEdgeAction", () => {
         state.graph.addEdge(node1, node2);
         state.gameSettings.operationMode = OperationMode.UNITTEST;
         simulationHistory = new SimulationHistory(state);
+    });
+
+    it("returns the correct typename", () => {
+        var action = new RemoveEdgeAction(node1, node2);
+        expect(action.typename).toBe("RemoveEdgeAction");
     });
 
     it("removes an edge (=apply) and rebuilds it (=revert)", () => {

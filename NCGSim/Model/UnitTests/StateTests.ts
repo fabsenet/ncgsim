@@ -22,3 +22,39 @@ describe("A Point", () => {
         expect(p1.getDistance(p3_7)).toBeCloseTo(p3_7.getDistance(p1), 7);
     });
 });
+
+describe("A State", () => {
+    var state: State;
+
+    beforeEach(()=> {
+        state = new State();
+    });
+
+    it("has valid start values", ()=> {
+        expect(state).toBeDefined();
+        expect(state.graph).toBeDefined();
+        expect(state.gameSettings).toBeDefined();
+
+        expect(state.roundCounter).toBe(0);
+    });
+
+    it("can be serialized", () => {
+        var json: string;
+        expect(() => { json = JSON.stringify(state); }).not.toThrow();
+        expect(json).toContain("{");
+    });
+
+    xit("can be deserialized", () => {
+
+        state.gameSettings.operationMode = OperationMode.PARALLEL;
+        var json: string;
+
+        expect(() => { json = JSON.stringify(state); }).not.toThrow();
+        state = null;
+        expect(() => { state = JSON.parse(json); }).not.toThrow();// TODO: The class information should not get lost on rehydration
+
+        expect(state.gameSettings.operationMode).toEqual(OperationMode.PARALLEL);
+        expect(state.graph.addNode).toBeDefined();
+
+    });
+});

@@ -8,11 +8,13 @@ class State {
 
     calculatePartialOperatingCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
         //TODO implementation is part of the actual scenario
+        //TODO provide implementation aligned to NCG papers
         return startNode.data.position.getDistance(endNode.data.position);
     }
     calculatePartialConnectionCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
         //TODO implementation is part of the actual scenario
-        if (this.graph.hasEdge(startNode, endNode)) {
+        //TODO provide implementation aligned to NCG papers
+        if (this.graph.hasEdge(startNode, endNode) || this.graph.hasEdge(endNode, startNode)) {
             return startNode.data.position.getDistance(endNode.data.position);
         } else {
             return 99999;

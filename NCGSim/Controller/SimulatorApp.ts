@@ -17,6 +17,8 @@ class stateCtrl {
         this.state.graph.addNode(new NodeData(80, 200));
         this.state.graph.addNode(new NodeData(123, 70));
 
+        this.history = new SimulationHistory(this.state);
+
         this.costs = {
             calculatePartialConnectionCosts: this.state.calculatePartialConnectionCosts.toString(),
             calculatePartialOperatingCosts: this.state.calculatePartialOperatingCosts.toString()
@@ -31,6 +33,7 @@ class stateCtrl {
     }
 
     state: State;
+    history: SimulationHistory;
     nodes: INode<NodeData>[];
     edges: IEdge[];
 
@@ -61,6 +64,10 @@ class stateCtrl {
         if (nodes.length == 0) return;
         this.state.graph.removeNode(_.last(nodes));
         this.refresh();
+    }
+
+    isNotANoOpAction(action: IAction): boolean {
+        return action.typename != "NoOpAction";
     }
 
     private refresh(): void {

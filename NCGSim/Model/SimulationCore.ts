@@ -1,6 +1,7 @@
 /// <reference path="_references.ts" />
 
 interface IAction {
+    typename: string;
     apply(state: State): void;
     revert(state: State): void;
 }
@@ -19,16 +20,19 @@ class SimulationHistory {
 
         var actions = this.simulator.simulateOneRound(this.state);
 
-        if (actions == null || actions.length <= 0) {
-            actions = [];
+        if (actions == null || actions.length <= 0 || _.all(actions, action=> action instanceof NoOpAction)) {
+            //the simulator yielded no actions => simulation is finished
+            return false;
         }
 
-        _.each(actions, function (action) {
+
+        _.each(actions, function(action) {
             action.apply(this.state);
         }, this);
 
         this.state.roundCounter++;
         this.actionsByRound.push(actions);
+        return true;
     }
 
     canGoOneRoundBackwards(): boolean {
