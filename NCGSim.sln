@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8C977F4-90E6-4F45-AE12-61EC5C8BE285}"
 	ProjectSection(SolutionItems) = preProject
 		WE2013-settings.xml = WE2013-settings.xml
+		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject
 Global
