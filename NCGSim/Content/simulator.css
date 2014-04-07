@@ -68,3 +68,5 @@ line.edge-end-arrow {
     stroke: rgb(55, 55, 55);
     fill:rgb(55, 55, 55);
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

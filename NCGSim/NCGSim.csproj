@@ -375,6 +375,9 @@
     <Content Include="Simulator.html" />
     <Content Include="SpecRunner.html" />
     <Content Include="Templates\Directives\graphviz.html" />
+    <Content Include="Templates\FinalGraph.html" />
+    <Content Include="Templates\Setup.html" />
+    <Content Include="Templates\SimulationLog.html" />
     <Content Include="version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
