@@ -17,6 +17,11 @@
                                     | Costs before: {{ratedAction.totalCostBefore | number:0}} | Costs after: {{ratedAction.totalCostAfter | number:0}}
                                 </div>
 
+                                <div ng-switch-when="RemoveEdgeAction">
+                                    {{ratedAction.action.typename}}: {{ratedAction.action.startNode.id}} => {{ratedAction.action.endNode.id}}
+                                    | Costs before: {{ratedAction.totalCostBefore | number:0}} | Costs after: {{ratedAction.totalCostAfter | number:0}}
+                                </div>
+
                                 <div ng-switch-when="NoOpAction">NoOp (filtered!)</div>
 
                                 <div ng-switch-default>
