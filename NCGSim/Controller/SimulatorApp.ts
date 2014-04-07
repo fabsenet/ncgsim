@@ -24,10 +24,6 @@ class stateCtrl {
             calculatePartialOperatingCosts: this.state.calculatePartialOperatingCosts.toString()
         };
 
-        this.settings = {
-            gameManipulation: this.state.gameSettings.gameManipulation == null ? "null" : this.state.gameSettings.gameManipulation.toString()
-        };
-
         this.refresh();
         $scope.$watch("vm", this.refresh.bind(this), true);
     }
@@ -41,8 +37,6 @@ class stateCtrl {
         calculatePartialConnectionCosts: string;
         calculatePartialOperatingCosts: string;
     };
-
-    settings: { gameManipulation: string };
 
     selectedNode: INode<NodeData> = null;
 

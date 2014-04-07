@@ -45,7 +45,6 @@ class Point {
 }
 class GameSettings {
     operationMode: OperationMode = OperationMode.SEQUENTIAL;
-    gameManipulation: (state: State) => State = null;
 }
 
 enum OperationMode {
