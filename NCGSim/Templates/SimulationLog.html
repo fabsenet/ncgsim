@@ -3,29 +3,30 @@
 <head>
     <title></title>
 </head>
-<body>
-    <button class="btn btn-success" ng-click="vm.history.simulateNextStep()">Simulate One Step</button>
-    <div>
-        <ol>
-            <li class="" ng-repeat="actions in vm.history.actionsByRound">
-                <ul>
-                    <li ng-repeat="action in actions | filter:vm.isNotANoOpAction">
-                        <div ng-switch on="action.typename">
-                            <div ng-switch-when="BuildEdgeAction">
-                                {{action.typename}}: {{action.startNode.id}} => {{action.endNode.id}}
-                            </div>
+    <body>
+        <h2>Simulation Log</h2>
+        <button class="btn btn-success" ng-click="vm.history.simulateNextStep()">Simulate One Step</button>
+        <div>
+            <ol>
+                <li class="" ng-repeat="actions in vm.history.actionsByRound">
+                    <ul>
+                        <li ng-repeat="action in actions | filter:vm.isNotANoOpAction">
+                            <div ng-switch on="action.typename">
+                                <div ng-switch-when="BuildEdgeAction">
+                                    {{action.typename}}: {{action.startNode.id}} => {{action.endNode.id}}
+                                </div>
 
-                            <div ng-switch-when="NoOpAction">NoOp (filtered!)</div>
+                                <div ng-switch-when="NoOpAction">NoOp (filtered!)</div>
 
-                            <div ng-switch-default>
-                                <!-- TODO: Provide template for all action types -->
-                                Unknown Action: {{action}}
+                                <div ng-switch-default>
+                                    <!-- TODO: Provide template for all action types -->
+                                    Unknown Action: {{action}}
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ol>
-    </div>   
-</body>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </div>   
+    </body>
 </html>
