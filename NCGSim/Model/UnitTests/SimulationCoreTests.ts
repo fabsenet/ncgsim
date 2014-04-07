@@ -23,7 +23,7 @@ describe("A SimulationCore", ()=> {
         var action: IAction = { apply: state=> {}, revert: state=> {}, typename: "n/a" };
 
         spyOn(action, "apply");
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State)=> [action] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
 
         simulationHistory.simulateNextStep();
 
@@ -34,7 +34,7 @@ describe("A SimulationCore", ()=> {
         var action: IAction = { apply: state=> {}, revert: state=> {}, typename: "n/a" };
 
         var expected = state.roundCounter + 1;
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State)=> [action] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
 
         simulationHistory.simulateNextStep();
 
@@ -43,11 +43,11 @@ describe("A SimulationCore", ()=> {
 
     it("stores applied actions in a simulation round", ()=> {
         var action: IAction = { apply: state=> {}, revert: state=> {}, typename: "n/a" };
-
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State)=> [action] };
+        var ratedAction = new RatedAction(action, 12, 11);
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [ratedAction] };
         simulationHistory.simulateNextStep();
 
-        expect(_.last(simulationHistory.actionsByRound)).toEqual([action]);
+        expect(_.last(simulationHistory.ratedActionsByRound)).toEqual([ratedAction]);
     });
 
     it("calls revert on action if the last round is reverted", ()=> {
@@ -55,7 +55,7 @@ describe("A SimulationCore", ()=> {
 
         spyOn(action, "apply");
         spyOn(action, "revert");
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State)=> [action] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
 
         simulationHistory.simulateNextStep();
         simulationHistory.goOneRoundBackwards();
@@ -68,7 +68,7 @@ describe("A SimulationCore", ()=> {
         var action: IAction = { apply: state=> {}, revert: state=> {}, typename: "n/a" };
 
         var expected = state.roundCounter;
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State)=> [action] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
         simulationHistory.simulateNextStep();
         simulationHistory.goOneRoundBackwards();
 
@@ -90,7 +90,7 @@ describe("A SimulationCore", ()=> {
 
         var applySpy = spyOn(action, "apply");
         var revertSpy = spyOn(action, "revert");
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State)=> [action] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
 
         expect(applySpy.calls.count()).toBe(0);
         expect(revertSpy.calls.count()).toBe(0);

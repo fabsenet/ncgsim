@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCGSim", "NCGSim\NCGSim.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8C977F4-90E6-4F45-AE12-61EC5C8BE285}"
 	ProjectSection(SolutionItems) = preProject
+		karma.conf.js = karma.conf.js
 		WE2013-settings.xml = WE2013-settings.xml
 		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection

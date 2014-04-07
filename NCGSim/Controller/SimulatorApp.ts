@@ -1,6 +1,5 @@
 /// <reference path="../model/_references.ts" />
 
-angular.module('SimulatorApp', ['ui.bootstrap', 'app.directives.graphviz', 'app.directives.ncgversion']);
 
 interface IEdge {
     startNode: INode<NodeData>;
@@ -60,8 +59,8 @@ class stateCtrl {
         this.refresh();
     }
 
-    isNotANoOpAction(action: IAction): boolean {
-        return action.typename != "NoOpAction";
+    isNotANoOpAction(ratedAction: RatedAction): boolean {
+        return ratedAction.action.typename != "NoOpAction";
     }
 
     private refresh(): void {
@@ -85,3 +84,6 @@ class stateCtrl {
         return edges;
     }
 }
+
+var app = angular.module('SimulatorApp', ['ui.bootstrap', 'app.directives.graphviz', 'app.directives.ncgversion']);
+app.controller("stateCtrl", stateCtrl);

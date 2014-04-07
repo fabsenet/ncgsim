@@ -8,19 +8,20 @@
         <button class="btn btn-success" ng-click="vm.history.simulateNextStep()">Simulate One Step</button>
         <div>
             <ol>
-                <li class="" ng-repeat="actions in vm.history.actionsByRound">
+                <li class="" ng-repeat="ratedActions in vm.history.ratedActionsByRound">
                     <ul>
-                        <li ng-repeat="action in actions | filter:vm.isNotANoOpAction">
-                            <div ng-switch on="action.typename">
+                        <li ng-repeat="ratedAction in ratedActions | filter:vm.isNotANoOpAction">
+                            <div ng-switch on="ratedAction.action.typename">
                                 <div ng-switch-when="BuildEdgeAction">
-                                    {{action.typename}}: {{action.startNode.id}} => {{action.endNode.id}}
+                                    {{ratedAction.action.typename}}: {{ratedAction.action.startNode.id}} => {{ratedAction.action.endNode.id}}
+                                    | Costs before: {{ratedAction.totalCostBefore | number:0}} | Costs after: {{ratedAction.totalCostAfter | number:0}}
                                 </div>
 
                                 <div ng-switch-when="NoOpAction">NoOp (filtered!)</div>
 
                                 <div ng-switch-default>
                                     <!-- TODO: Provide template for all action types -->
-                                    Unknown Action: {{action}}
+                                    Unknown Action: {{ratedAction.action}}
                                 </div>
                             </div>
                         </li>

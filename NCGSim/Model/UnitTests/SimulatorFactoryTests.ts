@@ -17,7 +17,7 @@ describe("A SimulatorFactory", () => {
     });
 
     it("returns the provided Simulator instance in testcases", () => {
-        var mySpecialInstance = { simulateOneRound: (state: State) => { return <IAction[]>null; } };
+        var mySpecialInstance = { simulateOneRound: (state: State) => { return <RatedAction[]>null; } };
 
         SimulatorFactory.simulatorInstance = mySpecialInstance;
         var simulator = SimulatorFactory.buildInstance(OperationMode.UNITTEST);
