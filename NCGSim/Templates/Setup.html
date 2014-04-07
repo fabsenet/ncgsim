@@ -4,6 +4,99 @@
     <title></title>
 </head>
 <body>
+    <h3>Graph</h3>
+    <div class="row">
+
+        <div class="col-lg-6">
+            <h3>Nodes</h3>
+            <div>
+                <button class="btn btn-danger" ng-click="vm.removeNode()">Remove Node</button>
+                <button class="btn btn-primary" ng-click="vm.addNode()">Add Node</button>
+            </div>
+            <br />
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Node ID</th>
+                        <th>X</th>
+                        <th>Y</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="node in vm.nodes" ng-click="vm.selectNode(node)" class="{{node == vm.selectedNode ? 'table-selected-row':''}}">
+                        <td>{{node.id}}</td>
+                        <td><input style="width:70px" type="number" min="-999" max="999" maxlength="3" ng-model="node.data.position.x" /></td>
+                        <td><input style="width:70px" type="number" min="-999" max="999" maxlength="3" ng-model="node.data.position.y" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <h3>Edges</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Start Node</th>
+                        <th>End Node</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="edge in vm.edges">
+                        <td>{{edge.startNode.id}}</td>
+                        <td>{{edge.endNode.id}}</td>
+                        <td><button class="btn btn-danger" ng-click="vm.state.graph.removeEdge(edge.startNode, edge.endNode)">Remove Edge</button></td>
+                    </tr>
+                    <tr>
+                        <td><select required ng-options="node.id for node in vm.nodes" ng-model="vm.startnode"></select></td>
+                        <td><select required ng-options="node.id for node in vm.nodes" ng-model="vm.endnode"></select></td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="vm.state.graph.addEdge(vm.startnode, vm.endnode)"
+                                    ng-disabled="!vm.startnode || !vm.endnode || vm.startnode==vm.endnode || vm.state.graph.hasEdge(vm.startnode, vm.endnode)">
+                                Add Edge
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <h3>Visualization</h3>
+            <div data-graphviz data-graph="vm.state.graph" data-selected-node="vm.selectedNode" data-node-clicked="vm.selectNode(node)" data-has-border="true" style="height: 400px;"></div>
+        </div>
+    </div>
+    <h3>Cost Function</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            The cost function is splitted up to allow a simpler declaration.
+        </div>
+        <div class="col-md-6">
+            <h4>PartialOperatingCosts</h4>
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
+            <pre>{{vm.costs.calculatePartialOperatingCosts}}</pre>
+        </div>
+        <div class="col-md-6">
+            <h4>PartialConnectionCosts</h4>
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i> Actually editing the cost functions is not implemented yet.</div>
+            <pre>{{vm.costs.calculatePartialConnectionCosts}}</pre>
+        </div>
+    </div>
+    <h3>Game Settings</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Operation Mode</h4>
+            <p>You can select the operation mode of all players. Either they act sequentially or in parallel each round.</p>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" ng-model="vm.state.gameSettings.operationMode" btn-radio="0">SEQUENTIAL</button>
+                <button type="button" class="btn btn-danger" ng-model="vm.state.gameSettings.operationMode" btn-radio="1">PARALLEL</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Game Manipulation</h4>
+            Here you can provide a manipulating function which is called in between each round to edit the simulation.
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i> This is not implemented yet.</div>
+            <pre>{{settings.gameManipulation}}</pre>
+        </div>
+    </div>
 
 </body>
 </html>
