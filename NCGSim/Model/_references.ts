@@ -3,6 +3,7 @@
 /// <reference path="state.ts" />
 /// <reference path="simulationcore.ts" />
 /// <reference path="graph.ts" />
+/// <reference path="Dijkstra.ts" />
 /// <reference path="BuildActions.ts" />
 
 

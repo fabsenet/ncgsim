@@ -6,14 +6,16 @@ class State {
     gameSettings: GameSettings = new GameSettings();
     roundCounter = 0;
 
+    alpha: number = 1.3;
+
     calculatePartialOperatingCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
-        //TODO implementation is part of the actual scenario
-        //TODO provide implementation aligned to NCG papers
-        return startNode.data.position.getDistance(endNode.data.position);
+        return this.alpha;
     }
+
     calculatePartialConnectionCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
-        //TODO implementation is part of the actual scenario
-        //TODO provide implementation aligned to NCG papers
+
+        var path = Dijkstra.getShortestPath(this.graph, startNode, endNode, () => 1);
+
         if (this.graph.hasEdge(startNode, endNode) || this.graph.hasEdge(endNode, startNode)) {
             return startNode.data.position.getDistance(endNode.data.position);
         } else {

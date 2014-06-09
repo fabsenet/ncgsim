@@ -64,6 +64,7 @@
     <TypeScriptCompile Include="Directives\ncgversion.ts" />
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
     <TypeScriptCompile Include="Model\BuildActions.ts" />
+    <TypeScriptCompile Include="Model\Dijkstra.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
     <TypeScriptCompile Include="Model\SimulationCore.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
@@ -385,6 +386,7 @@
     <TypeScriptCompile Include="Model\Simulator.ts" />
     <TypeScriptCompile Include="Model\UnitTests\ArrayHelperTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\BuildActionTests.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\DijkstraTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulationCoreTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulatorAppTests.ts" />
@@ -435,7 +437,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>21714</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

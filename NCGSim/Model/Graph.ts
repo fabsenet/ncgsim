@@ -28,14 +28,14 @@
         }
     }
 
-    interface IdToNodeMap<TNodePayload> {
+    interface IIdToNodeMap<TNodePayload> {
         [id:number]: INode<TNodePayload>;
     }
 
     class AdjacencyGraph<TNodePayload> implements IGraph<TNodePayload> {
         private nodes: AdjacencyNode<TNodePayload>[] = [];
         private nextNodeId = 1;
-        private nodesById: IdToNodeMap<TNodePayload>={};
+        private nodesById: IIdToNodeMap<TNodePayload>={};
 
         hasEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) {
             return _.contains(startNode.connectedEdges, endNode.id);
