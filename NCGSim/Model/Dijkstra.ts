@@ -8,11 +8,12 @@ class DijkstraNodeDetails<TNodePayload>{
 
 class Dijkstra {
 
-  
-    // The weightFunction must return a value >=0 for every existing edge
-    // The function returns an array of nodes which build the (or one) shortest path excluding the start and end nodes
-    // If the function return null, this means there is no shortest path
-    // The function returns an empty array if start==end
+    /**
+     * The weightFunction must return a value >=0 for every existing edge
+     * The function returns an array of nodes which build the (or one) shortest path excluding the start and end nodes
+     * If the function return null, this means there is no path at all
+     * The function returns an empty array if start==end
+     */
     public static getShortestPath<TNodePayload>(graph: IGraph<TNodePayload>, startNode: INode<TNodePayload>, endNode: INode<TNodePayload>,
         weightFunction: (startNode: INode<TNodePayload>, endNode: INode<TNodePayload>) => number): INode<TNodePayload>[]{
 
