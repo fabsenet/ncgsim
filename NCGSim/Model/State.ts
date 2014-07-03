@@ -6,7 +6,7 @@ class State {
     gameSettings: GameSettings = new GameSettings();
     roundCounter = 0;
 
-    alpha: number = 1.3;
+    alpha: number = 0.81;
 
     calculatePartialOperatingCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
         return this.alpha;
@@ -16,10 +16,15 @@ class State {
 
         var path = Dijkstra.getShortestPath(this.graph, startNode, endNode, () => 1);
 
-        if (this.graph.hasEdge(startNode, endNode) || this.graph.hasEdge(endNode, startNode)) {
-            return startNode.data.position.getDistance(endNode.data.position);
+        if (path == null) {
+            //start and end have no connection
+            return 1000;
+        } else if (path.length == 0) {
+            //start and end have a direct connection
+            return 1;
         } else {
-            return 99999;
+            //there is a shortest path with >1 edges
+            return 1 + path.length;
         }
     }
 }
