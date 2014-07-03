@@ -9,10 +9,10 @@
 
     class RatedAction {
         action: IAction;
-            totalCostBefore: number;
-    totalCostAfter: number;
+        totalCostBefore: Costs;
+    totalCostAfter: Costs;
 
-        constructor(action: IAction, totalCostBefore: number, totalCostAfter: number) {
+        constructor(action: IAction, totalCostBefore: Costs, totalCostAfter: Costs) {
             this.action = action;
             this.totalCostBefore = totalCostBefore;
             this.totalCostAfter = totalCostAfter;
@@ -38,7 +38,7 @@
                 _.each(possibleActionsForPlayer, (action) => { ratedActions.push(SimulatorBase.rateAction(playerNode, action, currentState)); });
 
                 //select the best action
-                var bestAction:RatedAction = _.first(_.sortBy(ratedActions, action=> action.totalCostAfter));
+                var bestAction:RatedAction = _.first(_.sortBy(ratedActions, action=> action.totalCostAfter.totalCosts));
 
                 //remember action
                 actionsToPerform.push(bestAction);
@@ -49,7 +49,7 @@
             });
 
             //revert all actions to fullfill contract of not permanently modifying currentState
-            _.each(actionsToPerform, action=> action.action.revert(currentState));
+            _.each(actionsToPerform, ratedAction=> ratedAction.action.revert(currentState));
             return actionsToPerform;
         }
     }
@@ -88,7 +88,7 @@
         }
 
 
-        static rateState(playerNode: INode<NodeData>, state: State): number {
+        static rateState(playerNode: INode<NodeData>, state: State): Costs {
             var nodes = state.graph.getNodes();
             __.removeArrayItem(nodes, playerNode);
             var connectionCosts = _.reduce(nodes,
@@ -99,7 +99,7 @@
                 (costs: number, targetNodeId: number) => costs + state.calculatePartialOperatingCosts(playerNode, state.graph.getNodeById(targetNodeId)),
                 0.0);
 
-            return connectionCosts + operatingCosts;
+            return new Costs(connectionCosts, operatingCosts);
         }
 
         static rateAction(playerNode:INode<NodeData>, action:IAction, state:State): RatedAction {
@@ -107,12 +107,24 @@
             action.apply(state);
 
             var totalCostAfter = this.rateState(playerNode, state);
+            console.log("rating action '" + action.typename + "' for player " + playerNode.id+" = "+totalCostAfter.totalCosts, action);
 
             action.revert(state);
 
             return new RatedAction(action, this.rateState(playerNode, state), totalCostAfter);
         }
 
+    }
+
+    class Costs {
+        constructor(connectionCosts, operatingCosts) {
+            this.connectionCosts = connectionCosts;
+            this.operatingCosts = operatingCosts;
+            this.totalCosts = connectionCosts + operatingCosts;
+        }
+        connectionCosts: number = 0;
+        operatingCosts: number = 0;
+        totalCosts: number = 0;
     }
 
     class SimulatorFactory {

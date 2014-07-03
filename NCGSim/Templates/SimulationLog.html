@@ -14,12 +14,14 @@
                             <div ng-switch on="ratedAction.action.typename">
                                 <div ng-switch-when="BuildEdgeAction">
                                     {{ratedAction.action.typename}}: {{ratedAction.action.startNode.id}} => {{ratedAction.action.endNode.id}}
-                                    | Costs before: {{ratedAction.totalCostBefore | number:0}} | Costs after: {{ratedAction.totalCostAfter | number:0}}
+                                    | Costs before: {{ratedAction.totalCostBefore.operatingCosts | number:2}}(Op)+{{ratedAction.totalCostBefore.connectionCosts | number:2}}(Con)={{ratedAction.totalCostBefore.totalCosts | number:2}}(Con)
+                                    | Costs before: {{ratedAction.totalCostAfter.operatingCosts | number:2}}(Op)+{{ratedAction.totalCostAfter.connectionCosts | number:2}}(Con)={{ratedAction.totalCostAfter.totalCosts | number:2}}(Con)
                                 </div>
 
                                 <div ng-switch-when="RemoveEdgeAction">
                                     {{ratedAction.action.typename}}: {{ratedAction.action.startNode.id}} => {{ratedAction.action.endNode.id}}
-                                    | Costs before: {{ratedAction.totalCostBefore | number:0}} | Costs after: {{ratedAction.totalCostAfter | number:0}}
+                                    | Costs before: {{ratedAction.totalCostBefore.operatingCosts | number:2}}(Op)+{{ratedAction.totalCostBefore.connectionCosts | number:2}}(Con)={{ratedAction.totalCostBefore.totalCosts | number:2}}(Con)
+                                    | Costs before: {{ratedAction.totalCostAfter.operatingCosts | number:2}}(Op)+{{ratedAction.totalCostAfter.connectionCosts | number:2}}(Con)={{ratedAction.totalCostAfter.totalCosts | number:2}}(Con)
                                 </div>
 
                                 <div ng-switch-when="NoOpAction">NoOp (filtered!)</div>
