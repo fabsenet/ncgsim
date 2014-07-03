@@ -43,7 +43,7 @@ describe("A StateCtrl", () => {
 
     it("filters NoOpActions", () => {
         expect(astateCtrl).toBeDefined();
-        expect(astateCtrl.isNotANoOpAction(new RatedAction(new NoOpAction(), 1, 2))).toBe(false);
-        expect(astateCtrl.isNotANoOpAction(new RatedAction(new BuildNodeAction(new NodeData()), 1, 2))).toBe(true);
+        expect(astateCtrl.isNotANoOpAction(new RatedAction(new NoOpAction(), new Costs(0, 1), new Costs(0, 12)))).toBe(false);
+        expect(astateCtrl.isNotANoOpAction(new RatedAction(new BuildNodeAction(new NodeData()), new Costs(0, 1), new Costs(0, 12)))).toBe(true);
     });
 }); 

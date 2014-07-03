@@ -30,7 +30,7 @@ describe("A BuildNodeAction", () => {
         var nodedata = new NodeData(12, 5);
         var action = new BuildNodeAction(nodedata);
 
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
 
         expect(state.graph.getNodes().length).toBe(0);
         simulationHistory.simulateNextStep();
@@ -66,7 +66,7 @@ describe("A BuildEdgeAction", () => {
     it("builds an edge and reverts it", () => {
         var action = new BuildEdgeAction(node1, node2);
 
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
 
         expect(state.graph.getNodes().length).toBe(2);
         expect(state.graph.hasEdge(node1, node2)).toBe(false);
@@ -90,7 +90,7 @@ describe("A BuildEdgeAction", () => {
         state.graph.addEdge(node1, node2);
         var action = new BuildEdgeAction(node1, node2);
 
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
 
         expect(state.graph.getNodes().length).toBe(2);
         expect(state.graph.hasEdge(node1, node2)).toBe(true);
@@ -101,7 +101,7 @@ describe("A BuildEdgeAction", () => {
 
     it("throws if the edge disappears between apply and revert", () => {
         var action = new BuildEdgeAction(node1, node2);
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
         simulationHistory.simulateNextStep();
         state.graph.removeEdge(node1, node2);
         expect(() => simulationHistory.goOneRoundBackwards()).toThrow();
@@ -133,7 +133,7 @@ describe("A RemoveEdgeAction", () => {
     it("removes an edge (=apply) and rebuilds it (=revert)", () => {
         var action = new RemoveEdgeAction(node1, node2);
 
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
 
         expect(state.graph.getNodes().length).toBe(2);
         expect(state.graph.hasEdge(node1, node2)).toBe(true);
@@ -156,7 +156,7 @@ describe("A RemoveEdgeAction", () => {
         state.graph.removeEdge(node1, node2);
         var action = new RemoveEdgeAction(node1, node2);
 
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
 
         expect(state.graph.getNodes().length).toBe(2);
         expect(state.graph.hasEdge(node1, node2)).toBe(false);
@@ -168,7 +168,7 @@ describe("A RemoveEdgeAction", () => {
     it("throws if the specified edge appears between apply and revert", () => {
         var action = new RemoveEdgeAction(node1, node2);
 
-        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, 12, 11)] };
+        SimulatorFactory.simulatorInstance = { simulateOneRound: (s: State) => [new RatedAction(action, new Costs(0,12), new Costs(0,11))] };
         simulationHistory.simulateNextStep();
         state.graph.addEdge(node1, node2); 
         expect(() => simulationHistory.goOneRoundBackwards()).toThrow();
