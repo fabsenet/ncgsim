@@ -44,17 +44,32 @@ describe("A State", () => {
         expect(json).toContain("{");
     });
 
-    xit("can be deserialized", () => {
+    it("can be deserialized", () => {
 
         state.gameSettings.operationMode = OperationMode.PARALLEL;
+
+        var n1 = state.graph.addNode(new NodeData(10, 10));
+        var n2 = state.graph.addNode(new NodeData(20, 20));
+        var n3 = state.graph.addNode(new NodeData(30, 30));
+
+        state.graph.addEdge(n1, n2);
+
         var json: string;
 
-        expect(() => { json = JSON.stringify(state); }).not.toThrow();
+        console.log("State before", state);
+        expect(() => { json = JSON.stringify(state, State.replacer); }).not.toThrow();
         state = null;
-        expect(() => { state = JSON.parse(json); }).not.toThrow();// TODO: The class information should not get lost on rehydration
+        console.log("JSON",json);
+        expect(() => { state = JSON.parse(json, State.reviver); }).not.toThrow();// TODO: The class information should not get lost on rehydration
+        console.log("State after", state);
 
         expect(state.gameSettings.operationMode).toEqual(OperationMode.PARALLEL);
         expect(state.graph.addNode).toBeDefined();
+
+        expect(state.graph.getNodes().length).toBe(3);
+        expect(state.graph.getNodes()[0].data).toMatch(new NodeData(10, 10));
+
+        expect(state.graph.hasEdge(state.graph.getNodeById(n1.id), state.graph.getNodeById(n2.id))).toBe(true);
 
     });
 });

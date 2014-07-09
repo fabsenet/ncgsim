@@ -27,7 +27,35 @@ class stateCtrl {
         $scope.$watch("vm", this.refresh.bind(this), true);
     }
 
+    importStateFromJson(json: string) {
+        console.log("importStateFromJson called", json, this);
+
+        this.state = JSON.parse(json, State.reviver);
+        this.history = new SimulationHistory(this.state);
+
+        this.costs = {
+            calculatePartialConnectionCosts: this.state.calculatePartialConnectionCosts.toString(),
+            calculatePartialOperatingCosts: this.state.calculatePartialOperatingCosts.toString()
+        };
+
+        this.refresh();
+    }
+
+    canImportStateFromJson(json: string): boolean {
+        if (json == null || json.trim() == "") return false;
+
+        try {
+        JSON.parse(json, State.reviver);
+            return true;
+        }
+        catch (e) {
+            console.debug("stateCtrl: canImportStateFromJson", { json: json, error: e });
+        }
+        return false;
+    }
+
     state: State;
+    stateAsJson: string;
     history: SimulationHistory;
     nodes: INode<NodeData>[];
     edges: IEdge[];
@@ -66,6 +94,8 @@ class stateCtrl {
     private refresh(): void {
         this.nodes = this.state.graph.getNodes();
         this.edges = this.getEdges();
+
+        this.stateAsJson = JSON.stringify(this.state, State.replacer, 2);
     }
 
     private getEdges(): IEdge[] {

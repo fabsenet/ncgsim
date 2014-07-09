@@ -34,7 +34,9 @@ interface ILine {
 
 class graphvizCtrl {
 
-    graph: IGraph<NodeData>;
+    graph(): IGraph<NodeData> {
+        return this.scope.graph;
+    }
 
     width = 300;
     height = 300;
@@ -48,14 +50,15 @@ class graphvizCtrl {
     lines:ILine[] = [];
 
     private buildLines() {
-        var nodes = this.graph.getNodes();
+        console.log("graphviz: building lines", this.graph());
+        var nodes = this.graph().getNodes();
 
         this.minx = this.miny = this.maxx = this.maxy = null;
 
         this.lines = [];
         nodes.forEach((startNode: INode<NodeData>)=> {
             startNode.connectedEdges.forEach((endNodeId: number) => {
-                var endNode = this.graph.getNodeById(endNodeId);
+                var endNode = this.graph().getNodeById(endNodeId);
                 var currentline = {
                     x1: startNode.data.position.x,
                     y1: startNode.data.position.y,
@@ -108,7 +111,7 @@ class graphvizCtrl {
         }, true);
 
         $scope.vm = this;
-        this.graph = $scope.graph;
+        //this.graph = $scope.graph;
         this.buildLines();
     }
 
