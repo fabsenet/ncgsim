@@ -68,7 +68,18 @@
             return node;
         }
 
+
         removeNode(node: INode<TNodePayload>) {
+            //remove edges to and from this node
+            _.forEach(this.nodes, (otherNode) => {
+                if (this.hasEdge(otherNode, node)) {
+                    this.removeEdge(otherNode, node);
+                } else if (this.hasEdge(node, otherNode)) {
+                    this.removeEdge(node, otherNode);
+                }
+            });
+
+            //remove the node itself
             __.removeArrayItem(this.nodes, node);
             delete this.nodesById[node.id];
         }

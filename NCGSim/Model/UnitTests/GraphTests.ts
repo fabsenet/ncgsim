@@ -80,6 +80,23 @@ describe("A Graph", () => {
         expect(graph.hasEdge(node1, node2)).toBe(false);
     });
 
+    it("does remove edges when corresponding node is removed", () => {
+        //this represents issue #1
+        var node1 = graph.addNode("1");
+        var node2 = graph.addNode("2");
+        var node3 = graph.addNode("3");
+
+        graph.addEdge(node1, node3);
+
+        expect(graph.hasEdge(node1, node3)).toBe(true);
+        expect(node1.connectedEdges).toEqual([3]);
+
+        graph.removeNode(node3);
+
+        expect(graph.hasEdge(node1, node3)).toBe(false);
+        expect(node1.connectedEdges).toEqual([]);
+    });
+
     it("ignores multiple adds of edges", () => {
         var node1 = graph.addNode("1");
         var node2 = graph.addNode("2");
