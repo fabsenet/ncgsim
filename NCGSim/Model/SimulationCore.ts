@@ -35,6 +35,16 @@ class SimulationHistory {
         return true;
     }
 
+    resetSimulation(): void {
+        //rewind all simulation steps
+        while (this.canGoOneRoundBackwards()) {
+            this.goOneRoundBackwards();
+        }
+
+        //delete history
+        this.ratedActionsByRound = [];
+    }
+
     canGoOneRoundBackwards(): boolean {
         return this.state.roundCounter > 0;
     }
