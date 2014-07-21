@@ -17,7 +17,7 @@
                         <p ng-switch-when="2">Mode = unit test</p>
                         <p ng-switch-default>Mode = unknown mode {{sampleItem.state.gameSettings.operationMode}}!</p>
                     </ng-switch>
-                    <p><button class="btn btn-lg" ng-click="vm.replaceState(sampleItem.state)">Select</button></p>
+                    <p><button class="btn btn-lg" ng-click="vm.importStateFromJson(sampleItem.stateJson)">Select</button></p>
                 </div>
                 <div class="col-lg-7">
                     <div data-graphviz data-graph="sampleItem.state.graph" data-has-border="true" style="height: 400px;margin-bottom: 70px;"></div>

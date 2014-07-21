@@ -3,7 +3,8 @@
 interface ISampleListItem {
     name: string;
     url: string;
-    state: any;
+    state: State;
+    stateJson:string;
 }
 
 class PredefinedGraphsController {
@@ -21,10 +22,20 @@ class PredefinedGraphsController {
 
                 _.forEach(this.sampleList, (item:ISampleListItem) => {
 
-                    $http({ method: 'GET', url: 'Model/Samples/' + item.url,transformResponse : (stateString)=> { return JSON.parse(stateString, State.reviver); }})
-                        .success((graph) => {
-                            console.log("received graph for item!", graph, item);
-                            item.state = graph;
+                    $http({
+                            method: 'GET',
+                            url: 'Model/Samples/' + item.url,
+                            transformResponse: (stateString) => {
+                                return {
+                                    "stateObj": JSON.parse(stateString, State.reviver),
+                                    "stateString": stateString
+                                };
+                            }
+                        })
+                        .success((state) => {
+                            console.log("received state for item!", state, item);
+                            item.state = state.stateObj;
+                            item.stateJson = state.stateString;
                         })
                         .error(() => {
                             console.log("failed loading graph data for item.", item);
