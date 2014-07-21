@@ -9,6 +9,7 @@
     <script src="Directives/graphviz.js"></script>
     <script src="Directives/ncgversion.js"></script>
     <script src="Controller/SimulatorApp.js"></script>
+    <script src="Controller/PredefinedGraphsController.js"></script>
 
     <link href="Content/font-awesome.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -34,6 +35,9 @@
     </div>
     <div class="container">
         <div data-tabset data-justified="false">
+            <div data-tab data-heading="Predefined Graphs">
+                <div data-ng-include="'Templates/PredefinedGraphs.html'"></div>
+            </div>
             <div data-tab data-heading="Setup">
                 <div data-ng-include="'Templates/Setup.html'"></div>
             </div>

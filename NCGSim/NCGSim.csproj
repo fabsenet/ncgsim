@@ -59,13 +59,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Controller\PredefinedGraphsController.ts" />
     <TypeScriptCompile Include="Controller\SimulatorApp.ts" />
     <TypeScriptCompile Include="Directives\graphviz.ts" />
     <TypeScriptCompile Include="Directives\ncgversion.ts" />
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
     <TypeScriptCompile Include="Model\BuildActions.ts" />
+    <None Include="Model\Samples\Default.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <TypeScriptCompile Include="Model\Dijkstra.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
+    <None Include="Model\Samples\_list.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <TypeScriptCompile Include="Model\SimulationCore.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -87,6 +94,9 @@
     <Content Include="lib\jasmine-2.0.0\jasmine.css" />
     <Content Include="lib\jasmine-2.0.0\jasmine.js" />
     <Content Include="lib\jasmine-2.0.0\jasmine_favicon.png" />
+    <None Include="Model\Samples\Petersen.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -398,6 +408,7 @@
     <Content Include="Simulator.html" />
     <Content Include="SpecRunner.html" />
     <Content Include="Templates\Directives\graphviz.html" />
+    <Content Include="Templates\PredefinedGraphs.html" />
     <Content Include="Templates\FinalGraph.html" />
     <Content Include="Templates\ImportExport.html" />
     <Content Include="Templates\Setup.html" />

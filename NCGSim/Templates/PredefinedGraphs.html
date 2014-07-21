@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Final Graph</title>
+    </head>
+    <body>
+        <div ng-controller="PredefinedGraphsController">
+            <h2>Predefined Sample Graphs</h2>
+            <div class="row" ng-repeat="sampleItem in samplesvm.sampleList">
+                <div class="col-lg-5">
+                    <h3 title="{{sampleItem.state}}">{{sampleItem.name}}</h3>
+                    <p>Alpha = {{sampleItem.state.alpha}}</p>
+                    <p>Nodes = {{sampleItem.state.graph.getNodes().length}}</p>
+                    <ng-switch on="sampleItem.state.gameSettings.operationMode">
+                        <p ng-switch-when="0">Mode = sequential</p>
+                        <p ng-switch-when="1">Mode = parallel</p>
+                        <p ng-switch-when="2">Mode = unit test</p>
+                        <p ng-switch-default>Mode = unknown mode {{sampleItem.state.gameSettings.operationMode}}!</p>
+                    </ng-switch>
+                    <p><button class="btn btn-lg" ng-click="vm.replaceState(sampleItem.state)">Select</button></p>
+                </div>
+                <div class="col-lg-7">
+                    <div data-graphviz data-graph="sampleItem.state.graph" data-has-border="true" style="height: 400px;margin-bottom: 70px;"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

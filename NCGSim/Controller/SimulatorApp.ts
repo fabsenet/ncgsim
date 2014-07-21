@@ -27,10 +27,10 @@ class stateCtrl {
         $scope.$watch("vm", this.refresh.bind(this), true);
     }
 
-    importStateFromJson(json: string) {
-        console.log("importStateFromJson called", json, this);
+    replaceState(state: State) {
+        console.log("replaceState called", state, this);
 
-        this.state = JSON.parse(json, State.reviver);
+        this.state = state;
         this.history = new SimulationHistory(this.state);
 
         this.costs = {
@@ -39,6 +39,14 @@ class stateCtrl {
         };
 
         this.refresh();
+    }
+
+    importStateFromJson(json: string) {
+        console.log("importStateFromJson called", json, this);
+
+        var state = JSON.parse(json, State.reviver);
+
+        this.replaceState(state);
     }
 
     canImportStateFromJson(json: string): boolean {
