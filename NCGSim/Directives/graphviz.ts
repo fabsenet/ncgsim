@@ -50,8 +50,9 @@ class graphvizCtrl {
     lines:ILine[] = [];
 
     private buildLines() {
-        console.log("graphviz: building lines", this.graph());
-        var nodes = this.graph().getNodes();
+        var graph = this.graph();
+        console.log("graphviz: building lines", graph);
+        var nodes = (graph != null) ? this.graph().getNodes() : [];
 
         this.minx = this.miny = this.maxx = this.maxy = null;
 
