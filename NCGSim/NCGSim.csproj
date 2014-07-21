@@ -15,7 +15,7 @@
     <RootNamespace>NCGSim</RootNamespace>
     <AssemblyName>NCGSim</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -65,14 +65,14 @@
     <TypeScriptCompile Include="Directives\ncgversion.ts" />
     <TypeScriptCompile Include="Model\ArrayHelper.ts" />
     <TypeScriptCompile Include="Model\BuildActions.ts" />
-    <None Include="Model\Samples\Default.json">
+    <Content Include="Model\Samples\Default.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <TypeScriptCompile Include="Model\Dijkstra.ts" />
     <TypeScriptCompile Include="Model\Graph.ts" />
-    <None Include="Model\Samples\_list.json">
+    <Content Include="Model\Samples\_list.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <TypeScriptCompile Include="Model\SimulationCore.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -94,9 +94,9 @@
     <Content Include="lib\jasmine-2.0.0\jasmine.css" />
     <Content Include="lib\jasmine-2.0.0\jasmine.js" />
     <Content Include="lib\jasmine-2.0.0\jasmine_favicon.png" />
-    <None Include="Model\Samples\Petersen.json">
+    <Content Include="Model\Samples\Petersen.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -467,11 +467,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>21714</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:21714/</IISUrl>
+          <IISUrl>http://localhost/NCGSim</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
