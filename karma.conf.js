@@ -25,7 +25,8 @@ module.exports = function(config) {
       //'NCGSim/lib/**/*.js',
       //'NCGSim/lib/*.js',
       
-	  'NCGSim/Controller/*.js',
+    'NCGSim/Controller/SimulatorApp.js',
+    'NCGSim/Controller/*.js',
 	  'NCGSim/Directives/*.js',
 	  
       'NCGSim/Model/*.js',
