@@ -6,5 +6,17 @@
      {
          "name":"Petersen",
          "url":"Petersen.json"
+     },
+     {
+         "name":"Circle of 5 (connected)",
+         "url":"Circle_of_5_connected.json"
+     },
+     {
+         "name":"Circle of 5 (unconnected)",
+         "url":"Circle_of_5_unconnected.json"
+     },
+     {
+         "name":"Circle of 10 (unconnected)",
+         "url":"Circle_of_10_unconnected.json"
      }
  ]
