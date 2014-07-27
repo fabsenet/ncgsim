@@ -8,13 +8,28 @@ class State {
 
     alpha: number = 0.81;
 
+
+    private static debug = (message?: string, ...optionalParams: any[]) => { };
+
+    public static setDebugEnabled(enabled: boolean): void {
+        if (enabled) {
+            State.debug = console.debug;
+        } else {
+            State.debug = () => { };
+        }
+    }
+
+
     calculatePartialOperatingCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
         return this.alpha;
     }
 
     calculatePartialConnectionCosts(startNode: INode<NodeData>, endNode: INode<NodeData>): number {
 
+
         var path = Dijkstra.getShortestPath(this.graph, startNode, endNode, () => 1);
+
+        console.log("calculatePartialConnectionCosts: startnode.id, endnode.id, path", startNode.id, endNode.id, path);
 
         if (path == null) {
             //start and end have no connection
@@ -29,7 +44,7 @@ class State {
     }
 
     static replacer(key, value) {
-        console.debug("State: replacer", key, value);
+        State.debug("State: replacer", key, value);
 
         var graph: IGraph<NodeData>;
         var nodes: INode<NodeData>[];
@@ -74,7 +89,7 @@ class State {
     }
 
     static reviver(key, value) {
-        console.debug("State: reviver", key, value);
+        State.debug("State: reviver", key, value);
         switch (key) {
         case "gameSettings":
             var gameSettings = new GameSettings();

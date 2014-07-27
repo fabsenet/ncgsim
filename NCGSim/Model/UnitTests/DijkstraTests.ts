@@ -7,6 +7,7 @@ describe("Dijkstra algorithm", () => {
     var node1, node2, node3, node4;
 
     beforeEach(() => {
+        Dijkstra.setDebugEnabled(true);
         graph = GraphFactory.getInstance<String>();
         node1 = graph.addNode("node1");
         node2 = graph.addNode("node2");
@@ -14,7 +15,9 @@ describe("Dijkstra algorithm", () => {
         node4 = graph.addNode("node4");
     });
 
-
+    afterEach(() => {
+        Dijkstra.setDebugEnabled(false);
+    });
 
     it("returns null if there is no path at all between start and end", () => {
         var shortestPath = Dijkstra.getShortestPath(graph, node1, node2, () => 1);

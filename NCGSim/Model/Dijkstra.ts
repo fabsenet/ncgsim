@@ -4,9 +4,24 @@
 class DijkstraNodeDetails<TNodePayload>{
     distance: number = Number.MAX_VALUE;
     prevNode: INode<TNodePayload> = null;
+
+    public toString(): string {
+        return "DijkstraNodeDetails(distance=" + ((this.distance == Number.MAX_VALUE) ? "infinite" : this.distance.toString()) +
+            ", prevNode.id=" + (this.prevNode==null ? "null" : this.prevNode.id.toString()) + ")";
+    }
 }
 
 class Dijkstra {
+
+    private static debug = (message?: string, ...optionalParams: any[]) => { };
+
+    public static setDebugEnabled(enabled: boolean): void {
+        if (enabled) {
+            Dijkstra.debug = console.debug;
+        } else {
+            Dijkstra.debug = () => {};
+        }
+    }
 
     /**
      * The weightFunction must return a value >=0 for every existing edge
@@ -23,6 +38,7 @@ class Dijkstra {
 
         //init Dijkstra
         var unvisitedNodes = graph.getNodes();
+        Dijkstra.debug("Dijkstra: init: unvisitedNodes", _.map(unvisitedNodes, (node) => { return node.id; }));
 
         var nodeDetails: DijkstraNodeDetails<TNodePayload>[] = [];
 
@@ -30,6 +46,7 @@ class Dijkstra {
             nodeDetails[node.id] = new DijkstraNodeDetails<TNodePayload>();
 
             if (node == startNode) {
+                Dijkstra.debug("Dijkstra: init: setting start node distance=0; node.id:", node.id);
                 nodeDetails[node.id].distance = 0;
             }
         });
@@ -38,25 +55,38 @@ class Dijkstra {
 
         while (currentNode != null) {
             var currentNodeDetails: DijkstraNodeDetails<TNodePayload> = nodeDetails[currentNode.id];
+            Dijkstra.debug("Dijkstra: while: currentNode.id", currentNode.id);
+            Dijkstra.debug("Dijkstra: while: currentNodeDetails", currentNodeDetails.toString());
 
             //"visit" current node
-            _.forEach(this.getAllConnectedNodes(graph, currentNode), (connectedNode) => {
+            __.removeArrayItem(unvisitedNodes, currentNode);
+            var allConnectedNodes = this.getAllConnectedNodes(graph, currentNode);
+            Dijkstra.debug("Dijkstra: while: allConnectedNodes", _.map(allConnectedNodes, (node) => { return node.id; }));
+
+            _.forEach(allConnectedNodes, (connectedNode) => {
                 var weight = weightFunction(currentNode, connectedNode);
+                Dijkstra.debug("Dijkstra: while: weightFunction: currentNode.id, connectedNode.id, weight", currentNode.id, connectedNode.id, weight);
+
                 var connectedNodeDetail: DijkstraNodeDetails<TNodePayload> = nodeDetails[connectedNode.id];
                 if (currentNodeDetails.distance + weight < connectedNodeDetail.distance) {
+                    Dijkstra.debug("Dijkstra: while: updating connectedNodeDetail before", connectedNodeDetail.toString());
                     connectedNodeDetail.distance = currentNodeDetails.distance + weight;
                     connectedNodeDetail.prevNode = currentNode;
+                    Dijkstra.debug("Dijkstra: while: updating connectedNodeDetail after", connectedNodeDetail.toString());
                 }
             });
 
             //select next node to visit
-            var nextNode: INode<TNodePayload> = _.first(_.sortBy(unvisitedNodes, "distance"));
+            Dijkstra.debug("Dijkstra: while: select next node to visit: unvisitedNodes", _.map(unvisitedNodes, (node) => { return node.id; }));
+            var nextNode: INode<TNodePayload> = _.first(_.sortBy(unvisitedNodes, (node) => { return nodeDetails[node.id].distance; }));
+
             if (nextNode != null && nodeDetails[nextNode.id].distance < Number.MAX_VALUE) {
                 currentNode = nextNode;
-                __.removeArrayItem(unvisitedNodes, nextNode);
             } else {
                 currentNode = null;
             }
+            Dijkstra.debug("Dijkstra: while: selected next node to visit", currentNode);
+
         }
 
         //build path from start to end
