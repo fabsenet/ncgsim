@@ -22,7 +22,6 @@
 
     class SequentialSimulator implements ISimulator {
 
-        //TODO write spec for this method
         simulateOneRound(currentState: State): RatedAction[] {
 
             var actionsToPerform: RatedAction[] = [];
@@ -57,8 +56,27 @@
     class ParallelSimulator implements ISimulator {
 
         simulateOneRound(currentState: State): RatedAction[] {
-            //todo add actually simulating here
-            throw new Error("Not implemented");
+
+            var actionsToPerform: RatedAction[] = [];
+
+            //for each player
+            _.each(currentState.graph.getNodes(), playerNode=> {
+
+                //find all possible actions
+                var possibleActionsForPlayer: IAction[] = SimulatorBase.getPossibleActionForPlayer(playerNode, currentState);
+
+                //rate all actions
+                var ratedActions: RatedAction[] = [];
+                _.each(possibleActionsForPlayer, (action) => { ratedActions.push(SimulatorBase.rateAction(playerNode, action, currentState)); });
+
+                //select the best action
+                var bestAction: RatedAction = _.first(_.sortBy(ratedActions, action=> action.totalCostAfter.totalCosts));
+
+                //remember action
+                actionsToPerform.push(bestAction);
+            });
+
+            return actionsToPerform;
         }
 
     }
