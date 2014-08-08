@@ -13,7 +13,7 @@
         removeEdge(startNode: INode<TNodePayload>, endNode: INode<TNodePayload>): void;
       
           //Node manipulations
-        addNode(payload: TNodePayload): INode<TNodePayload>;
+        addNode(payload: TNodePayload, id?:number): INode<TNodePayload>;
         removeNode(node: INode<TNodePayload>);
 
         //enumeration
@@ -54,10 +54,24 @@
         }
 
 
-        addNode(payload: TNodePayload): INode<TNodePayload> {
+        addNode(payload: TNodePayload, id?: number): INode<TNodePayload> {
+            if (id === undefined) {
+                //no id defined, use the next one
+                id = this.nextNodeId++;
+            } else {
+                //a specific id is requested, check and use this one
+                if (this.nodesById[id] !== undefined) {
+                    throw new Error("The requested ID is already used in this graph!");
+                }
+                if (!isNaN(parseInt(<any>id))) {
+                    this.nextNodeId = Math.max(this.nextNodeId + 1, id + 1);
+                } else {
+                    this.nextNodeId = this.nextNodeId++;
+                }
+            }
             //construct
             var node = new AdjacencyNode<TNodePayload>();
-            node.id = this.nextNodeId++;
+            node.id = id;
             node.data = payload;
 
             //save

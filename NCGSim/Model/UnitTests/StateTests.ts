@@ -60,7 +60,7 @@ describe("A State", () => {
         expect(() => { json = JSON.stringify(state, State.replacer); }).not.toThrow();
         state = null;
         console.log("JSON",json);
-        expect(() => { state = JSON.parse(json, State.reviver); }).not.toThrow();// TODO: The class information should not get lost on rehydration
+        expect(() => { state = JSON.parse(json, State.reviver); }).not.toThrow();
         console.log("State after", state);
 
         expect(state.gameSettings.operationMode).toEqual(OperationMode.PARALLEL);
@@ -71,5 +71,21 @@ describe("A State", () => {
 
         expect(state.graph.hasEdge(state.graph.getNodeById(n1.id), state.graph.getNodeById(n2.id))).toBe(true);
 
+    });
+
+
+    it("can deserialize a graph which had removed nodes at some point in time (issue #15)", () => {
+        var n1 = state.graph.addNode(new NodeData(10, 10));
+        var n2 = state.graph.addNode(new NodeData(20, 20));
+        var n3 = state.graph.addNode(new NodeData(30, 30));
+        state.graph.removeNode(n2);
+        state.graph.addEdge(n1, n3);
+
+        var json = JSON.stringify(state, State.replacer);
+        var newState = <State>JSON.parse(json, State.reviver);
+
+        var nodes = newState.graph.getNodes();
+        expect(nodes.length).toBe(2);
+        expect(newState.graph.hasEdge(nodes[0], nodes[1])).toBe(true);
     });
 });

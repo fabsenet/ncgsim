@@ -113,7 +113,7 @@ class State {
             var graph = GraphFactory.getInstance<NodeData>();
 
             _.each(value.nodes, (simpleNode: any) => {
-                var node = graph.addNode(new NodeData(simpleNode.x, simpleNode.y));
+                var node = graph.addNode(new NodeData(simpleNode.x, simpleNode.y), simpleNode.id);
                 if (node.id != simpleNode.id) {
                     throw new Error("ID mismatch. Expected id to be " + simpleNode.id + " but got " + node.id);
                 }
