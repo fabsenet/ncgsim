@@ -73,7 +73,7 @@
     <Content Include="Model\Samples\_list.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <TypeScriptCompile Include="Model\SimulationCore.ts" />
+    <TypeScriptCompile Include="Model\SimulationHistory.ts" />
     <TypeScriptCompile Include="Model\State.ts" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -431,7 +431,7 @@
     <TypeScriptCompile Include="Model\UnitTests\BuildActionTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\DijkstraTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\GraphTests.ts" />
-    <TypeScriptCompile Include="Model\UnitTests\SimulationCoreTests.ts" />
+    <TypeScriptCompile Include="Model\UnitTests\SimulationHistoryTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulatorAppTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulatorFactoryTests.ts" />
     <TypeScriptCompile Include="Model\UnitTests\SimulatorTests.ts" />

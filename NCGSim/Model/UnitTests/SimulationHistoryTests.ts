@@ -1,7 +1,7 @@
 /// <reference path="../_references.ts" />
 /// <reference path="../../scripts/typings/jasmine/jasmine.d.ts" />
 
-describe("A SimulationCore", ()=> {
+describe("A SimulationHistory", ()=> {
 
     var state;
     var simulationHistory;
